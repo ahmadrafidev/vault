@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans } from "next/font/google";
+
 import "./globals.css";
 import { Footer } from "./components";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dm_sans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: 'swap',
+  preload: true,
 });
 
 export const metadata: Metadata = {
   title: "Vault",
-  description: "A curated collection of design engineering resources",
+  description: "A curated gems for design and engineering",
 };
 
 export default function RootLayout({
@@ -26,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${dm_sans.variable} antialiased`}
       >
         {children}
         <Footer />

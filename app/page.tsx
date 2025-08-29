@@ -14,7 +14,7 @@ export default function Home() {
               The Essential Digital Library for Design and Engineering
             </h1>
             <p className="text-lg sm:text-xl text-foreground/70 leading-relaxed mb-8">
-              A curated collection of design engineering resources.
+              A Curated Gems for Design and Code
             </p>
           </div>
         </div>
