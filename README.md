@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vault
 
-## Getting Started
+## What is it?
 
-First, run the development server:
+Vault is my personal digital library where I collect, organize, and preserve the knowledge, inspiration, and connections that fuel my work as a designer and engineer.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Motivation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+As someone who works at the intersection of design and engineering, I needed a space to collect articles, tutorials, and insights that inspire my work, keep track of interesting people in the design and tech communities, save videos and talks that teach me new skills or perspectives, and build a personal archive of the things that matter to my creative process. This isn't just a website—it's my digital library, a place where I can quickly access the resources that help me grow professionally and stay inspired.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## What's Inside
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Articles** - A collection of articles, tutorials, and insights that inspire my work
+- **People** - Interesting individuals in the design and tech communities I want to track
+- **Videos** - Talks, tutorials, and content that teach new skills or perspectives
 
-## Learn More
+## Contribute
 
-To learn more about Next.js, take a look at the following resources:
+### With Code
+This vault is open source. You can contribute by:
+- Reporting bugs or issues
+- Suggesting new features
+- Submitting pull requests for improvements
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Submit Resources
+Help build the vault by sharing:
+- Interesting articles or tutorials you've found
+- People in design/tech you think should be included
+- Videos or talks that inspired you
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](/LICENSE)
