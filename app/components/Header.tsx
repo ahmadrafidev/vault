@@ -2,19 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-
-const resourceItems = [
-  { name: "Videos", href: "/videos", description: "Video content about design engineering" },
-  { name: "Articles", href: "/articles", description: "Thought-provoking articles" },
-  { name: "People", href: "/people", description: "Inspiring designers and creators" },
-];
 
 export default function Header() {
   const pathname = usePathname();
-  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
 
-  const isResourceActive = resourceItems.some(item => pathname === item.href);
+  const isResourceActive = pathname === "/resources";
   const isHomeActive = pathname === "/";
 
   return (
@@ -45,54 +37,17 @@ export default function Header() {
               Home
             </Link>
 
-            {/* Resources Dropdown */}
-            <div className="relative">
-              <button
-                onMouseEnter={() => setIsResourcesOpen(true)}
-                onMouseLeave={() => setIsResourcesOpen(false)}
-                className={`px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 flex items-center space-x-1 ${
-                  isResourceActive
-                    ? "bg-foreground/10 text-foreground"
-                    : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
-                }`}
-              >
-                <span>Resources</span>
-                <svg
-                  className={`w-3 h-3 transition-transform duration-200 ${
-                    isResourcesOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              {/* Dropdown Menu */}
-              {isResourcesOpen && (
-                <div
-                  className="absolute right-0 mt-1 w-64 bg-background border border-foreground/10 rounded-lg shadow-lg py-2 z-50"
-                  onMouseEnter={() => setIsResourcesOpen(true)}
-                  onMouseLeave={() => setIsResourcesOpen(false)}
-                >
-                  {resourceItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className={`block px-4 py-3 text-sm transition-colors hover:bg-foreground/5 ${
-                        pathname === item.href
-                          ? "text-foreground bg-foreground/5"
-                          : "text-foreground/70 hover:text-foreground"
-                      }`}
-                    >
-                      <div className="font-medium">{item.name}</div>
-                      <div className="text-xs text-foreground/50 mt-1">{item.description}</div>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* Resources Link */}
+            <Link
+              href="/resources"
+              className={`px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
+                isResourceActive
+                  ? "bg-foreground/10 text-foreground"
+                  : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
+              }`}
+            >
+              Resources
+            </Link>
           </nav>
         </div>
       </div>

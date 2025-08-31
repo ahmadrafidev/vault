@@ -26,8 +26,12 @@ export default function RootLayout({
       <body
         className={`${dm_sans.variable} antialiased`}
       >
-        {children}
-        <Footer />
+        <main className="min-h-screen flex flex-col">
+          <div className="flex-1">
+            {children}
+          </div>
+          <Footer />
+        </main> 
       </body>
     </html>
   );
