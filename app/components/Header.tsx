@@ -11,7 +11,7 @@ export default function Header() {
 
   return (
     <header className="bg-background/95 backdrop-blur-sm sticky top-0 z-50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-1.5">
         <div className="flex items-center justify-between h-16">
 
           <Link
@@ -24,13 +24,13 @@ export default function Header() {
           </Link>
 
           {/* Navigation */}
-          <nav className="flex items-center space-x-1">
+          <nav className="flex items-center">
             {/* Home Link */}
             <Link
               href="/"
-              className={`px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
+              className={`px-3 py-2 text-sm md:text-base font-medium rounded-md transition-all duration-200 ${
                 isHomeActive
-                  ? "bg-foreground/10 text-foreground"
+                  ? "bg-background text-foreground"
                   : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
               }`}
             >
@@ -40,9 +40,9 @@ export default function Header() {
             {/* Resources Link */}
             <Link
               href="/resources"
-              className={`px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
+              className={`px-3 py-2 text-sm md:text-base font-medium rounded-md transition-all duration-200 ${
                 isResourceActive
-                  ? "bg-foreground/10 text-foreground"
+                  ? "bg-background text-foreground"
                   : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
               }`}
             >

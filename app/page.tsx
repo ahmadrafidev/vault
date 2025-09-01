@@ -1,5 +1,7 @@
-import { Header } from "./components";
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+
+import { Header } from "./components";
 
 const resourceCategories = [
   {
@@ -29,14 +31,14 @@ export default function Home() {
 
       {/* Hero Section */}
       <main className="max-w-5xl mx-auto px-6 lg:px-8">
-        <div className="pt-8 pb-6 text-center">
+        <div className="pt-8 pb-6 sm:pb-12 md:pb-16 text-center">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-foreground mb-4 leading-tight text-balance">
             The Essential Digital Library for Designers and Engineers
           </h1>
         </div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-5 gap-6 pb-8">
+        <div className="grid lg:grid-cols-5 gap-6">
           {/* Resources Categories */}
           <div className="lg:col-span-3">
             <h2 className="text-lg font-light text-foreground mb-4">
@@ -57,7 +59,7 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="text-foreground/40 group-hover:text-foreground/60 group-hover:translate-x-0.5 transition-all duration-200">
-                      →
+                      <ChevronRight className="w-4 h-4" />
                     </div>
                   </div>
                 </Link>
@@ -69,7 +71,7 @@ export default function Home() {
                 href="/resources"
                 className="text-sm md:text-base text-foreground/60 hover:text-foreground transition-colors"
               >
-                View all resources →
+                View all resources
               </Link>
             </div>
           </div>
@@ -77,7 +79,7 @@ export default function Home() {
           {/* Submit Section */}
           <div className="lg:col-span-2">
             <h2 className="text-lg font-light text-foreground mb-4">
-              Submit resource
+              Suggest a resource
             </h2>
             
             {/* Card */}
@@ -89,9 +91,9 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-medium text-foreground">Share a Resource</h3>
+                  <h3 className="text-base font-medium text-foreground">Suggest a Resource</h3>
                   <p className="text-sm text-foreground/60">
-                    Help grow our community collection
+                    Share something valuable you've discovered
                   </p>
                 </div>
               </div>
@@ -113,12 +115,9 @@ export default function Home() {
                 
                 <button
                   type="submit"
-                  className="w-full px-5 py-4 bg-foreground text-background rounded-xl font-medium hover:bg-foreground/90 transition-all duration-200 transform hover:scale-[1.02] text-base flex items-center justify-center gap-2"
+                  className="w-full px-5 py-2 md:py-3 bg-foreground text-background rounded-xl font-medium hover:bg-foreground/90 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] text-base flex items-center justify-center gap-2"
                 >
-                  <span>Submit Resource</span>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
+                  <span>Send Suggestion</span>
                 </button>
               </form>
               
@@ -127,7 +126,7 @@ export default function Home() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  I'll review and add it to the collection
+                  I'll review and consider adding it to my vault
                 </p>
               </div>
             </div>

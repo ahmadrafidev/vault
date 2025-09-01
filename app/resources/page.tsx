@@ -43,10 +43,10 @@ export default function ResourcesPage() {
     <div className="bg-background">
       <Header />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-8 md:py-12">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
+        <div className="py-4 md:py-6">
           {/* Hero Section */}
-          <div className="text-center mb-8">
+          <div className="text-center mb-4 md:mb-6">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-foreground mb-4">
               Resources
             </h1>
@@ -67,7 +67,7 @@ export default function ResourcesPage() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`px-3 py-1.5 text-xs font-medium rounded transition-all duration-200 ${
+                    className={`px-3 py-1.5 text-xs md:text-base font-medium rounded transition-all duration-200 ${
                       activeTab === tab.id
                         ? "bg-background text-foreground shadow-sm"
                         : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
