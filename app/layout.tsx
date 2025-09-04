@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 
+import { Footer } from "@/src/components";
+
 import "./globals.css";
-import { Footer } from "./components";
 
 const dm_sans = DM_Sans({
   variable: "--font-dm-sans",
@@ -13,7 +14,7 @@ const dm_sans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "Vault",
-  description: "A curated gems for design and engineering",
+  description: "A curated resources for designers and engineers",
 };
 
 export default function RootLayout({

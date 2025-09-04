@@ -1,26 +1,32 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-import { Header } from "./components";
+import { Header } from "@/src/components";
 
 const resourceCategories = [
   {
     id: "videos",
     name: "Videos",
-    description: "Curated video content about design engineering, user experience, and creative processes",
+    description: "Curated video content about design engineering and creative processes",
     icon: "▶",
   },
   {
     id: "articles",
     name: "Articles", 
-    description: "Thought-provoking articles on design and engineering principles, trends, and insights",
+    description: "Thought-provoking articles on design and engineering.",
     icon: "📄",
   },
   {
     id: "people",
     name: "People",
-    description: "Inspiring designers, engineers, creators, and innovators shaping the future of design",
+    description: "Inspiring designers, engineers, and innovators.",
     icon: "👥",
+  },
+  {
+    id: "other",
+    name: "Other",
+    description: "Miscellaneous resources, tools, and discoveries.",
+    icon: "🔗",
   },
 ];
 
@@ -31,8 +37,8 @@ export default function Home() {
 
       {/* Hero Section */}
       <main className="max-w-5xl mx-auto px-6 lg:px-8">
-        <div className="pt-8 py-6 sm:py-12 md:py-16 text-start">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-foreground mb-4 leading-tight text-balance">
+        <div className="pt-8 py-6 sm:py-12 md:py-16 text-start max-w-lg">
+          <h1 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground mb-4 leading-tight">
             The Essential Archive for Designers and Engineers
           </h1>
         </div>
@@ -45,20 +51,20 @@ export default function Home() {
               Browse by category
             </h2>
             
-            <div className="grid gap-3">
+            <div className="space-y-3 md:space-y-6">
               {resourceCategories.map((category) => (
-                <Link key={category.id} href={`/resources#${category.id}`}>
-                  <div className="group max-w-xl flex items-center gap-3 p-4 rounded-xl border border-foreground/10 hover:border-foreground/20 hover:shadow-lg hover:shadow-foreground/5 hover:bg-foreground/[0.02] hover:-translate-y-0.5 g active:scale-[0.98] focus-within:ring-2 focus-within:ring-foreground/20 transition-all duration-150 ease-out cursor-pointer">
-                    <span className="text-xl group-hover:scale-110 transition-transform duration-300 ease-out">{category.icon}</span>
-                    <div className="flex-1">
-                      <h3 className="font-medium text-foreground mb-1 text-sm md:text-lg group-hover:text-foreground/90 transition-colors duration-200">
+                <Link key={category.id} href={`/resources?tab=${category.id}`}>
+                  <div className="group flex items-center gap-4 px-5 py-4 hover:bg-foreground/[0.008] hover:translate-x-1 active:translate-x-0 active:bg-foreground/[0.012] transition-all duration-200 ease-out cursor-pointer border-l-2 border-transparent hover:border-foreground/10">
+                    <span className="text-lg group-hover:scale-105 transition-transform duration-200 ease-out flex-shrink-0 opacity-60 group-hover:opacity-80">{category.icon}</span>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-medium text-foreground text-base group-hover:text-foreground transition-colors duration-200 truncate">
                         {category.name}
                       </h3>
-                      <p className="text-xs md:text-sm text-foreground/60 group-hover:text-foreground/70 leading-relaxed transition-colors duration-200">
+                      <p className="text-sm text-foreground/45 group-hover:text-foreground/60 leading-relaxed transition-colors duration-200 mt-1 overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 1, WebkitBoxOrient: 'vertical' }}>
                         {category.description}
                       </p>
                     </div>
-                    <div className="text-foreground/40 group-hover:text-foreground/60 group-hover:translate-x-1 active:translate-x-0.5 transition-all duration-300 ease-out">
+                    <div className="text-foreground/25 group-hover:text-foreground/45 group-hover:translate-x-0.5 transition-all duration-200 ease-out flex-shrink-0 opacity-0 group-hover:opacity-100">
                       <ChevronRight className="w-4 h-4" />
                     </div>
                   </div>
@@ -66,13 +72,13 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-4">
+            <div className="mt-6 px-5">
               <Link
                 href="/resources"
-                className="inline-flex items-center gap-1 text-sm md:text-base text-foreground/60 hover:text-foreground transition-all duration-200 hover:translate-x-1 group"
+                className="inline-flex items-center gap-1.5 text-sm text-foreground/50 hover:text-foreground/70 transition-all duration-200 hover:translate-x-0.5 group font-medium"
               >
                 <span>View all resources</span>
-                <ChevronRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" />
+                <ChevronRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 opacity-60 group-hover:opacity-100" />
               </Link>
             </div>
           </div>
