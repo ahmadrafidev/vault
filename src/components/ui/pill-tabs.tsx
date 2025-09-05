@@ -49,14 +49,14 @@ export function PillTabs({ tabs, activeTab, onTabChange, className }: PillTabsPr
           aria-orientation="horizontal"
           aria-label="Resource categories"
           className={cn(
-            "relative inline-flex rounded-full overflow-hidden bg-foreground/[0.04] p-1 border border-foreground/[0.08]",
+            "relative inline-flex rounded-full overflow-hidden bg-foreground/10 p-1 border border-foreground/20",
             tabSpacing
           )}
         >
           {/* Animated Indicator */}
           <div
             aria-hidden="true"
-            className="absolute rounded-full bg-background shadow-sm border border-foreground/[0.1] pointer-events-none"
+            className="absolute rounded-full bg-background shadow-sm border border-foreground/30 pointer-events-none"
             style={{ ...indicatorStyle, zIndex: 0 }}
           />
           
@@ -74,13 +74,13 @@ export function PillTabs({ tabs, activeTab, onTabChange, className }: PillTabsPr
               id={`tab-${tab.id}`}
               tabIndex={activeTab === tab.id ? 0 : -1}
               className={cn(
-                'relative font-medium rounded-full z-10 outline-none focus-visible:ring-2 focus-visible:ring-foreground/20 focus-visible:ring-offset-2',
+                'relative font-medium rounded-full z-10 outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2',
                 'transition-colors duration-200 ease',
                 tabPadding,
                 fontSize,
                 activeTab === tab.id
                   ? 'text-foreground'
-                  : 'text-foreground/50 hover:text-foreground/70'
+                  : 'text-foreground/60 hover:text-foreground'
               )}
             >
               {tab.label}
@@ -88,7 +88,6 @@ export function PillTabs({ tabs, activeTab, onTabChange, className }: PillTabsPr
           ))}
         </div>
       </div>
-
     </div>
   );
 }
