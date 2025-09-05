@@ -47,6 +47,7 @@ export function PillTabs({ tabs, activeTab, onTabChange, className }: PillTabsPr
           ref={tabContainerRef}
           role="tablist"
           aria-orientation="horizontal"
+          aria-label="Resource categories"
           className={cn(
             "relative inline-flex rounded-full overflow-hidden bg-foreground/[0.04] p-1 border border-foreground/[0.08]",
             tabSpacing
@@ -69,6 +70,8 @@ export function PillTabs({ tabs, activeTab, onTabChange, className }: PillTabsPr
               onClick={() => onTabChange(tab.id)}
               role="tab"
               aria-selected={activeTab === tab.id}
+              aria-controls={`panel-${tab.id}`}
+              id={`tab-${tab.id}`}
               tabIndex={activeTab === tab.id ? 0 : -1}
               className={cn(
                 'relative font-medium rounded-full z-10 outline-none focus-visible:ring-2 focus-visible:ring-foreground/20 focus-visible:ring-offset-2',

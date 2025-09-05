@@ -5,9 +5,10 @@ interface PageHeroProps {
   title: string;
   description?: string;
   className?: string;
+  titleId?: string;
 }
 
-export function PageHero({ title, description, className }: PageHeroProps) {
+export function PageHero({ title, description, className, titleId }: PageHeroProps) {
   const { heroSpacing, titleSize, descriptionSize } = useMobileLayout({
     reducePadding: true,
     compactSpacing: true,
@@ -16,7 +17,10 @@ export function PageHero({ title, description, className }: PageHeroProps) {
 
   return (
     <div className={cn(heroSpacing, className)}>
-      <h1 className={cn(titleSize, "font-medium tracking-tight text-foreground mb-3")}>
+      <h1
+        id={titleId || "page-title"}
+        className={cn(titleSize, "font-medium tracking-tight text-foreground mb-3")}
+      >
         {title}
       </h1>
       {description && (

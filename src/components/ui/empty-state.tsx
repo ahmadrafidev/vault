@@ -36,10 +36,14 @@ export function EmptyState({ category, className }: EmptyStateProps) {
           "flex flex-col items-center justify-center border-2 border-dashed border-foreground/[0.1] rounded-lg",
           padding
         )}>
-          <div className={cn(
-            "flex items-center justify-center rounded-full bg-foreground/[0.04] mb-4",
-            iconSize
-          )}>
+          <div
+            className={cn(
+              "flex items-center justify-center rounded-full bg-foreground/[0.04] mb-4",
+              iconSize
+            )}
+            role="img"
+            aria-label={`${category.name} category icon`}
+          >
             {category.icon}
           </div>
           <h3 className={cn(titleSize, "font-medium text-foreground mb-2")}>
@@ -51,8 +55,8 @@ export function EmptyState({ category, className }: EmptyStateProps) {
           )}>
             {category.description}
           </p>
-          <div className="flex items-center gap-2 text-xs text-foreground/40">
-            <Clock className="w-4 h-4" />
+          <div className="flex items-center gap-2 text-xs text-foreground/40" role="status" aria-live="polite">
+            <Clock className="w-4 h-4" aria-hidden="true" />
             <span>Coming soon</span>
           </div>
         </div>

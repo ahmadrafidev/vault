@@ -25,6 +25,15 @@ function ResourcesContent() {
     const url = new URL(window.location.href);
     url.searchParams.set('tab', tabId);
     router.push(url.pathname + url.search, { scroll: false });
+
+    const announcement = `Switched to ${RESOURCE_TABS.find(tab => tab.id === tabId)?.label} tab`;
+    const liveRegion = document.createElement('div');
+    liveRegion.setAttribute('aria-live', 'polite');
+    liveRegion.setAttribute('aria-atomic', 'true');
+    liveRegion.className = 'sr-only';
+    liveRegion.textContent = announcement;
+    document.body.appendChild(liveRegion);
+    setTimeout(() => document.body.removeChild(liveRegion), 1000);
   };
   
   const { 
@@ -39,22 +48,28 @@ function ResourcesContent() {
   });
 
   return (
-    <main className={`${maxWidth} mx-auto ${containerPadding}`}>
+    <main
+      id="main-content"
+      className={`${maxWidth} mx-auto ${containerPadding}`}
+      role="main"
+      aria-labelledby="resources-heading"
+    >
       <div className={sectionSpacing}>
-        <PageHero 
+        <PageHero
           title="Resources"
           description="Discover curated content to fuel your design engineering journey."
+          titleId="resources-heading"
         />
 
         <div className={navSpacing}>
-          <ResourceNavigation 
+          <ResourceNavigation
             tabs={RESOURCE_TABS}
             activeTab={activeTab}
             onTabChange={handleTabChange}
           />
         </div>
 
-        <ResourceContent 
+        <ResourceContent
           categories={resourceCategories}
           activeTab={activeTab}
         />
