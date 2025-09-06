@@ -1,4 +1,5 @@
 import type { AnimationConfig } from "@/src/types";
+import { CATEGORIES_CONFIG } from "@/src/data";
 
 // Animation constants
 export const ANIMATION_CONFIG: AnimationConfig = {
@@ -6,33 +7,8 @@ export const ANIMATION_CONFIG: AnimationConfig = {
   duration: 300,
 };
 
-// Resource categories
-export const RESOURCE_CATEGORIES_DATA = [
-  {
-    id: "articles",
-    name: "Articles",
-    description: "Thought-provoking articles on design and engineering principles, trends, and insights",
-    iconName: "FileText" as const,
-  },
-  {
-    id: "videos",
-    name: "Videos",
-    description: "Curated video content about design engineering, user experience, and creative processes",
-    iconName: "PlayCircle" as const,
-  },
-  {
-    id: "people",
-    name: "People",
-    description: "Inspiring designers, engineers, creators, and innovators shaping the future of design",
-    iconName: "Users" as const,
-  },
-  {
-    id: "other",
-    name: "Other",
-    description: "Miscellaneous resources, tools, and discoveries that don't fit traditional categories",
-    iconName: "MoreHorizontal" as const,
-  },
-] as const;
+// Resource categories - imported from data source
+export const RESOURCE_CATEGORIES_DATA = CATEGORIES_CONFIG;
 
 // Tab navigation
 export const RESOURCE_TABS = [

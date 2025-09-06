@@ -57,7 +57,7 @@ function ResourcesContent() {
       <div className={sectionSpacing}>
         <PageHero
           title="Resources"
-          description="Discover curated content to fuel your design engineering journey."
+          description="A highly curated list of discoveries."
           titleId="resources-heading"
         />
 

@@ -49,7 +49,7 @@ export function PillTabs({ tabs, activeTab, onTabChange, className }: PillTabsPr
           aria-orientation="horizontal"
           aria-label="Resource categories"
           className={cn(
-            "relative inline-flex rounded-full overflow-hidden bg-foreground/10 p-1 border border-foreground/20",
+            "relative inline-flex rounded-full overflow-hidden bg-foreground/5 p-1 border border-foreground/20",
             tabSpacing
           )}
         >
