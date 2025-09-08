@@ -4,7 +4,7 @@ export const articlesData: ContentItem[] = [
   {
     id: "great-animations",
     title: "Great Animations",
-    description: "Emil Kowalski explains how predictable and delightful animations make products stand out from crowded markets.",
+    description: "How predictable and delightful animations help products stand out.",
     link: "https://emilkowal.ski/ui/great-animations",
     category: "articles",
     tags: ["animations", "design", "ux"],
@@ -14,7 +14,7 @@ export const articlesData: ContentItem[] = [
   {
     id: "how-to-make-something-great",
     title: "How to make something great",
-    description: "Ryo Lu explores how to cultivate greatness by patiently transforming ambiguous concepts into inevitable excellence through exploration and instinct-driven iteration.",
+    description: "How to cultivate greatness through exploration and iteration.",
     link: "https://ryolu.notion.site/how-to-make-something-great",
     category: "articles",
     tags: ["design", "process", "creativity"],
@@ -24,7 +24,7 @@ export const articlesData: ContentItem[] = [
   {
     id: "improve-payment-experience-with-animations",
     title: "Improve Payment Experience with Animations",
-    description: "Articles about improving the user experience with animations.",
+    description: "Improving user experience with animations.",
     link: "https://medium.com/bridge-collection/improve-the-payment-experience-with-animations-3d1b0a9b810e",
     category: "articles",
     tags: ["payments", "ux", "animations"],
@@ -34,7 +34,7 @@ export const articlesData: ContentItem[] = [
   {
     id: "invisible-details-of-interaction-design",
     title: "Invisible Details of Interaction Design",
-    description: "Articles about the subtle design principles that make digital interfaces feel natural and intuitive.",
+    description: "Subtle design principles for natural digital interfaces.",
     link: "https://rauno.me/craft/interaction-design",
     category: "articles",
     tags: ["interaction design", "ux", "micro-interactions"],
@@ -44,7 +44,7 @@ export const articlesData: ContentItem[] = [
   {
     id: "oklch-colors",
     title: "Oklch Colors",
-    description: "Jakub Krehel explains how Oklch colors offer better color perception and consistency across different devices.",
+    description: "Better color perception and consistency with Oklch colors.",
     link: "https://jakub.kr/components/oklch-colors",
     category: "articles",
     tags: ["colors", "css", "design systems"],
@@ -54,7 +54,7 @@ export const articlesData: ContentItem[] = [
   {
     id: "simple-design",
     title: "Simple Design",
-    description: "Charlie Deets explores how simple design focuses on specific tasks to enhance ease of use and user experience.",
+    description: "How simple design enhances ease of use and user experience.",
     link: "https://charliedeets.com/writings/simpledesign.html",
     category: "articles",
     tags: ["design", "simplicity", "ux"],
@@ -64,7 +64,7 @@ export const articlesData: ContentItem[] = [
   {
     id: "twelve-principles-of-animation",
     title: "12 Principles of Animation",
-    description: "Raphael Salaja explains the 12 principles of animation, which are a set of guidelines for creating effective and engaging animations.",
+    description: "12 principles for creating effective and engaging animations.",
     link: "https://www.raphaelsalaja.com/library/12-principles-of-animation",
     category: "articles",
     tags: ["animation", "principles", "motion design"],

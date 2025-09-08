@@ -4,7 +4,7 @@ export const videosData: ContentItem[] = [
   {
     id: "animate-with-springs",
     title: "Animate with Springs",
-    description: "Learn how to create lively app animations using spring-based motion for a more dynamic user experience.",
+    description: "Creating lively app animations with spring-based motion.",
     link: "https://developer.apple.com/videos/play/wwdc2023/10158/",
     category: "videos",
     tags: ["animation", "springs", "motion"],
@@ -14,7 +14,7 @@ export const videosData: ContentItem[] = [
   {
     id: "conversation-on-quality",
     title: "Conversation on quality",
-    description: "Linear conversation on quality.",
+    description: "Conversation on quality.",
     link: "https://linear.app/quality",
     category: "videos",
     tags: ["quality", "design", "conversation"],
@@ -23,7 +23,7 @@ export const videosData: ContentItem[] = [
   {
     id: "crafting-quality",
     title: "Crafting quality that endures",
-    description: "Karri Saarinen shares how Linear crafts quality tools to empower designers.",
+    description: "How Linear crafts quality tools for designers.",
     link: "https://www.youtube.com/watch?v=pCil7YNhNCU",
     category: "videos",
     tags: ["quality", "design", "tools"],
@@ -33,7 +33,7 @@ export const videosData: ContentItem[] = [
   {
     id: "designing-fluid-interface",
     title: "Designing Fluid Interfaces",
-    description: "Apple's team talks about gestures and motion that feel intuitive and natural.",
+    description: "Gestures and motion that feel intuitive and natural.",
     link: "https://developer.apple.com/videos/play/wwdc2018/803",
     category: "videos",
     tags: ["interfaces", "gestures", "motion"],
@@ -43,7 +43,7 @@ export const videosData: ContentItem[] = [
   {
     id: "designing-sound",
     title: "Designing Sound",
-    description: "Learn how thoughtful sound design enhances user experience and creates more immersive apps and games.",
+    description: "Thoughtful sound design for immersive apps and games.",
     link: "https://developer.apple.com/videos/play/wwdc2017/803/",
     category: "videos",
     tags: ["sound design", "ux", "audio"],
@@ -53,7 +53,7 @@ export const videosData: ContentItem[] = [
   {
     id: "designing-with-the-mind-in-mind",
     title: "Designing with the Mind in Mind",
-    description: "Jeff Johnson’s talk about why UI design must be grounded in the realities of human psychology.",
+    description: "UI design grounded in human psychology.",
     link: "https://www.youtube.com/watch?v=Rh18iJ8gSfI",
     category: "videos",
     tags: ["psychology", "ui design", "human factors"],
@@ -63,7 +63,7 @@ export const videosData: ContentItem[] = [
   {
     id: "essential-design-principles",
     title: "Essential design principles",
-    description: "Apple's design principles for crafting user-friendly, empowering experiences.",
+    description: "Design principles for user-friendly experiences.",
     link: "https://developer.apple.com/videos/play/wwdc2017/802/",
     category: "videos",
     tags: ["design principles", "apple", "ux"],
@@ -73,7 +73,7 @@ export const videosData: ContentItem[] = [
   {
     id: "liquid-glass",
     title: "Meet Liquid Glass",
-    description: "Design principles for Liquid Glass by Apple.",
+    description: "Design principles for Liquid Glass.",
     link: "https://developer.apple.com/videos/play/wwdc2025/219/",
     category: "videos",
     tags: ["liquid glass", "apple", "design"],
@@ -83,7 +83,7 @@ export const videosData: ContentItem[] = [
   {
     id: "motion-and-playfullness",
     title: "Motion and Playfullness",
-    description: "How motion design creates delightful experiences that users want to use, building trust and driving engagement.",
+    description: "Motion design for delightful and engaging experiences.",
     link: "https://www.youtube.com/watch?v=fZpTvZuysIo",
     category: "videos",
     tags: ["motion", "playfulness", "engagement"],
@@ -93,7 +93,7 @@ export const videosData: ContentItem[] = [
   {
     id: "the-qualities-of-great-design",
     title: "The qualities of great design",
-    description: "Great Design is crafted with care by real people.",
+    description: "Great design crafted with care.",
     link: "https://developer.apple.com/videos/play/wwdc2018/801/",
     category: "videos",
     tags: ["great design", "craftsmanship", "quality"],

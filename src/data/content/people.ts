@@ -4,7 +4,7 @@ export const peopleData: ContentItem[] = [
   {
     id: "charlie-deets",
     title: "Charlie Deets",
-    description: "Charlie is a product designer at The Browser Company. Previously he was at Apple, WhatsApp, and Facebook.",
+    description: "Product designer at The Browser Company. Previously at Apple, WhatsApp, Facebook.",
     link: "https://charliedeets.com/",
     category: "people",
     tags: ["product design", "browser company", "apple"],
@@ -16,7 +16,7 @@ export const peopleData: ContentItem[] = [
   {
     id: "emil-kowalski",
     title: "Emil Kowalski",
-    description: "Emil is a designer engineer at Linear. Previously at Vercel.",
+    description: "Designer engineer at Linear. Previously at Vercel.",
     link: "https://emilkowal.ski/",
     category: "people",
     tags: ["designer engineer", "linear", "vercel"],
@@ -27,7 +27,7 @@ export const peopleData: ContentItem[] = [
   {
     id: "gavin-nelson",
     title: "Gavin Nelson",
-    description: "Gavin is a designer at Linear.",
+    description: "Designer at Linear.",
     link: "https://nelson.co/",
     category: "people",
     tags: ["designer", "linear"],
@@ -38,7 +38,7 @@ export const peopleData: ContentItem[] = [
   {
     id: "glenn-hitchcock",
     title: "Glenn Hitchcock",
-    description: "Glenn is a designer and director at Poolside. Previously he was at Vercel.",
+    description: "Designer and director at Poolside. Previously at Vercel.",
     link: "https://glenn.me/",
     category: "people",
     tags: ["designer", "director", "poolside", "vercel"],
@@ -49,7 +49,7 @@ export const peopleData: ContentItem[] = [
   {
     id: "paco-coursey",
     title: "Paco Coursey",
-    description: "Paco is a designer engineer at Linear. Previously he was at Vercel.",
+    description: "Designer engineer at Linear. Previously at Vercel.",
     link: "https://paco.me/",
     category: "people",
     tags: ["designer engineer", "linear", "vercel"],
@@ -60,7 +60,7 @@ export const peopleData: ContentItem[] = [
   {
     id: "rauno-freiberg",
     title: "Rauno Freiberg",
-    description: "Rauno is a staff design engineer at Vercel.",
+    description: "Staff design engineer at Vercel.",
     link: "https://rauno.me/",
     category: "people",
     tags: ["staff design engineer", "vercel"],
@@ -71,7 +71,7 @@ export const peopleData: ContentItem[] = [
   {
     id: "ryo-lu",
     title: "Ryo Lu",
-    description: "Ryo Lu is a head of design at Cursor. He was previously at Notion and Stripe.",
+    description: "Head of design at Cursor. Previously at Notion and Stripe.",
     link: "https://ryo.lu/",
     category: "people",
     tags: ["head of design", "cursor", "notion", "stripe"],

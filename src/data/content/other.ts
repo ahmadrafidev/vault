@@ -4,7 +4,7 @@ export const otherData: ContentItem[] = [
   {
     id: "animation-on-the-web",
     title: "Animation on the web",
-    description: "Emil Kowalski's courses about animation on the web.",
+    description: "Courses about animation on the web.",
     link: "https://animations.dev/learn",
     category: "other",
     tags: ["animation", "web", "courses"],
@@ -14,7 +14,7 @@ export const otherData: ContentItem[] = [
   {
     id: "blend-modes",
     title: "Blend Modes",
-    description: "A playground for exploring blend modes colors.",
+    description: "Playground for exploring blend modes.",
     link: "https://blendmodes.dev/multiply",
     category: "other",
     tags: ["blend modes", "colors", "playground"],
@@ -24,7 +24,7 @@ export const otherData: ContentItem[] = [
   {
     id: "ui-patterns",
     title: "UI Patterns",
-    description: "A comprehensive collection of user interface design patterns and persuasive design strategies for creating effective digital experiences.",
+    description: "Collection of UI design patterns and design strategies.",
     link: "https://ui-patterns.com/",
     category: "other",
     tags: ["ui patterns", "design patterns"],
