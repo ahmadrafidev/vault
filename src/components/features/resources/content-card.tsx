@@ -36,11 +36,11 @@ export function ContentCard({ content, className }: ContentCardProps) {
       >
         {/* Outer card layer */}
         <div className={cn(
-          "absolute inset-0 rounded-md bg-zinc-100 dark:bg-zinc-900 border border-gray-200 dark:border-gray-700 transition-all duration-150 ease-out group-hover:shadow-sm group-hover:bg-gray-50/50 dark:group-hover:bg-gray-800/60 group-hover:border-gray-300 dark:group-hover:border-gray-600 p-1.5 flex flex-col"
+          "absolute inset-0 rounded-md bg-zinc-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 transition-all duration-150 ease-out group-hover:shadow-sm group-hover:bg-gray-50/50 dark:group-hover:bg-zinc-800/40 group-hover:border-gray-300 dark:group-hover:border-zinc-600 p-1.5 flex flex-col"
         )}>
 
           {/* Inner card layer */}
-          <div className="relative w-full flex-1 rounded-sm bg-zinc-50 dark:bg-zinc-800 border border-gray-200 dark:border-gray-700 transition-all duration-300 ease-out group-hover:bg-gray-50/80 dark:group-hover:bg-gray-900 group-hover:border-gray-300 dark:group-hover:border-gray-600 overflow-hidden mb-1">
+          <div className="relative w-full flex-1 rounded-sm bg-zinc-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 transition-all duration-300 ease-out group-hover:bg-gray-50/80 dark:group-hover:bg-zinc-800/80 group-hover:border-gray-300 dark:group-hover:border-zinc-600 overflow-hidden mb-1">
 
             <div className="flex items-center justify-center h-full">
               {/* Type Icon */}
