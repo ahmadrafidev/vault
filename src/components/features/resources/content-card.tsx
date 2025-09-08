@@ -76,17 +76,10 @@ export function ContentCard({ content, className }: ContentCardProps) {
                     <span>{content.duration}</span>
                   </>
                 )}
-                {content.type === 'article' && 'readTime' in content && (
-                  <>
-                    <Clock className="w-3 h-3" />
-                    <span>{content.readTime} min</span>
-                  </>
-                )}
                 {content.type === 'person' && 'company' in content && (
-                  <span className="truncate">{content.company}</span>
+                  <span className="truncate text-xs md:text-sm font-medium">{content.company}</span>
                 )}
               </div>
-
               <ExternalLink className="w-3 h-3 text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300" />
             </div>
           </div>

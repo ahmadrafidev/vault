@@ -43,7 +43,7 @@ export function getContentByCategory(category: string): ContentItem[] {
  * @returns Array of all featured content items
  */
 export function getFeaturedContent(): ContentItem[] {
-  return getAllContent().filter(item => item.featured);
+  return getAllContent().filter(item => (item as any).featured);
 }
 
 /**
@@ -52,7 +52,7 @@ export function getFeaturedContent(): ContentItem[] {
  * @returns Array of featured content items for the specified category
  */
 export function getFeaturedContentByCategory(category: string): ContentItem[] {
-  return getContentByCategory(category).filter(item => item.featured);
+  return getContentByCategory(category).filter(item => (item as any).featured);
 }
 
 /**
@@ -105,7 +105,7 @@ export function getContentByTag(tag: string): ContentItem[] {
  */
 export function getRecentContent(limit: number = 10): ContentItem[] {
   return getAllContent()
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => new Date((b as any).date).getTime() - new Date((a as any).date).getTime())
     .slice(0, limit);
 }
 
@@ -147,6 +147,6 @@ export function getContentStats() {
       person: allContent.filter(item => item.type === 'person').length,
       resource: allContent.filter(item => item.type === 'resource').length,
     },
-    featured: allContent.filter(item => item.featured).length,
+    featured: allContent.filter(item => (item as any).featured).length,
   };
 }
