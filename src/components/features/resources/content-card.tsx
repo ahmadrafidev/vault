@@ -1,4 +1,5 @@
 import { ExternalLink, Clock, User, Play, FileText, Users } from "lucide-react";
+
 import type { ContentItem } from "@/src/data";
 import { cn } from "@/src/utils";
 
@@ -23,7 +24,7 @@ export function ContentCard({ content, className }: ContentCardProps) {
 
   return (
     <article className={cn(
-      "group relative h-full min-h-64 transition-all duration-300 group-focus-visible:ring-2 group-focus-visible:ring-gray-500/50 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-white dark:group-focus-visible:ring-offset-gray-900 outline-none",
+      "group relative h-full min-h-64 transition-all duration-150 group-focus-visible:ring-2 group-focus-visible:ring-gray-500/50 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-white dark:group-focus-visible:ring-offset-gray-900 outline-none",
       className
     )}>
       <a
@@ -35,7 +36,7 @@ export function ContentCard({ content, className }: ContentCardProps) {
       >
         {/* Outer card layer */}
         <div className={cn(
-          "absolute inset-0 rounded-md bg-zinc-100 dark:bg-zinc-900 border border-gray-200 dark:border-gray-700 transition-all duration-300 ease-out group-hover:shadow-md group-hover:bg-gray-50/50 dark:group-hover:bg-gray-800/60 group-hover:border-gray-300 dark:group-hover:border-gray-600 p-1.5 flex flex-col"
+          "absolute inset-0 rounded-md bg-zinc-100 dark:bg-zinc-900 border border-gray-200 dark:border-gray-700 transition-all duration-150 ease-out group-hover:shadow-sm group-hover:bg-gray-50/50 dark:group-hover:bg-gray-800/60 group-hover:border-gray-300 dark:group-hover:border-gray-600 p-1.5 flex flex-col"
         )}>
 
           {/* Inner card layer */}

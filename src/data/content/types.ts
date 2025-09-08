@@ -15,10 +15,8 @@ export interface BaseContentItem {
   title: string;
   description: string;
   link: string;
-  date: string; 
   category: string;
   tags: string[];
-  featured?: boolean;
 }
 
 /**
@@ -26,8 +24,7 @@ export interface BaseContentItem {
  */
 export interface VideoContent extends BaseContentItem {
   type: 'video';
-  platform: 'youtube' | 'vimeo' | 'twitch' | 'other';
-  duration: string; 
+  duration?: string;
   thumbnail?: string;
 }
 
@@ -37,8 +34,6 @@ export interface VideoContent extends BaseContentItem {
 export interface ArticleContent extends BaseContentItem {
   type: 'article';
   author: string;
-  readTime: number; // minutes
-  platform: 'medium' | 'dev.to' | 'blog' | 'other';
   thumbnail?: string;
 }
 
@@ -64,7 +59,6 @@ export interface PersonContent extends BaseContentItem {
 export interface ResourceContent extends BaseContentItem {
   type: 'resource';
   resourceType: 'tool' | 'library' | 'tutorial' | 'template' | 'other';
-  platform?: string;
 }
 
 export type ContentItem = VideoContent | ArticleContent | PersonContent | ResourceContent;
