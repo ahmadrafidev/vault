@@ -1,4 +1,6 @@
 import { ExternalLink, Clock, User, Play, FileText, Users } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 import type { ContentItem } from "@/src/data";
 import { cn } from "@/src/utils";
@@ -27,7 +29,7 @@ export function ContentCard({ content, className }: ContentCardProps) {
       "group relative h-full min-h-64 transition-all duration-150 group-focus-visible:ring-2 group-focus-visible:ring-gray-500/50 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-white dark:group-focus-visible:ring-offset-gray-900 outline-none",
       className
     )}>
-      <a
+      <Link
         href={content.link}
         target="_blank"
         rel="noopener noreferrer"
@@ -41,17 +43,28 @@ export function ContentCard({ content, className }: ContentCardProps) {
 
           {/* Inner card layer */}
           <div className="relative w-full flex-1 rounded-sm bg-zinc-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 transition-all duration-300 ease-out group-hover:bg-gray-50/80 dark:group-hover:bg-zinc-800/80 group-hover:border-gray-300 dark:group-hover:border-zinc-600 overflow-hidden mb-1">
-
-            <div className="flex items-center justify-center h-full">
-              {/* Type Icon */}
-              <div className="flex-shrink-0">
-                <div className="relative w-16 h-16 rounded-2xl bg-gray-100 dark:bg-gray-800 border border-gray-300/50 dark:border-gray-600/40 flex items-center justify-center transition-all duration-300 ease-out group-hover:scale-105 group-hover:shadow-md group-hover:bg-gray-200 dark:group-hover:bg-gray-700">
-                  <div className="text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors duration-300">
-                    {getTypeIcon()}
+            {content.thumbnail ? (
+              /* Full thumbnail when available */
+              <div className="relative w-full h-full">
+                <Image
+                  src={content.thumbnail}
+                  alt={`${content.title} thumbnail`}
+                  fill
+                  className="object-cover rounded-sm transition-all duration-300 ease-out group-hover:scale-105"
+                />
+              </div>
+            ) : (
+              /* Type Icon fallback */
+              <div className="flex items-center justify-center h-full">
+                <div className="flex-shrink-0">
+                  <div className="relative w-16 h-16 rounded-2xl bg-gray-100 dark:bg-gray-800 border border-gray-300/50 dark:border-gray-600/40 flex items-center justify-center transition-all duration-300 ease-out group-hover:scale-105 group-hover:shadow-md group-hover:bg-gray-200 dark:group-hover:bg-gray-700">
+                    <div className="text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors duration-300">
+                      {getTypeIcon()}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Content Details */}
@@ -84,7 +97,7 @@ export function ContentCard({ content, className }: ContentCardProps) {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </article>
   );
 }

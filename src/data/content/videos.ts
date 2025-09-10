@@ -39,6 +39,7 @@ export const videosData: ContentItem[] = [
     tags: ["interfaces", "gestures", "motion"],
     type: "video",
     duration: "64:41",
+    thumbnail: "/images/content/videos/designing-fluid-interfaces.png",
   },
   {
     id: "designing-sound",
