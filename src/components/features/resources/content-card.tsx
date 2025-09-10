@@ -24,6 +24,18 @@ export function ContentCard({ content, className }: ContentCardProps) {
     }
   };
 
+  const getImageSrc = () => {
+    switch (content.type) {
+      case 'video':
+      case 'article':
+        return content.thumbnail;
+      case 'person':
+        return content.avatar;
+      default:
+        return undefined;
+    }
+  };
+
   return (
     <article className={cn(
       "group relative h-full min-h-64 transition-all duration-150 group-focus-visible:ring-2 group-focus-visible:ring-gray-500/50 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-white dark:group-focus-visible:ring-offset-gray-900 outline-none",
@@ -43,12 +55,12 @@ export function ContentCard({ content, className }: ContentCardProps) {
 
           {/* Inner card layer */}
           <div className="relative w-full flex-1 rounded-sm bg-zinc-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 transition-all duration-300 ease-out group-hover:bg-gray-50/80 dark:group-hover:bg-zinc-800/80 group-hover:border-gray-300 dark:group-hover:border-zinc-600 overflow-hidden mb-1">
-            {content.thumbnail ? (
+            {getImageSrc() ? (
               /* Full thumbnail when available */
               <div className="relative w-full h-full">
                 <Image
-                  src={content.thumbnail}
-                  alt={`${content.title} thumbnail`}
+                  src={getImageSrc()!}
+                  alt={`${content.title} ${content.type === 'person' ? 'avatar' : 'thumbnail'}`}
                   fill
                   className="object-cover rounded-sm transition-all duration-300 ease-out group-hover:scale-105"
                 />
