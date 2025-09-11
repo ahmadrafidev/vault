@@ -50,6 +50,7 @@ export const videosData: ContentItem[] = [
     tags: ["sound design", "ux", "audio"],
     type: "video",
     duration: "34:48",
+    thumbnail: "/images/content/videos/designing-sound.png",
   },
   {
     id: "designing-with-the-mind-in-mind",
@@ -70,6 +71,7 @@ export const videosData: ContentItem[] = [
     tags: ["design principles", "apple", "ux"],
     type: "video",
     duration: "59:55",
+    thumbnail: "/images/content/videos/essential-design-principles.png",
   },
   {
     id: "liquid-glass",
@@ -100,5 +102,6 @@ export const videosData: ContentItem[] = [
     tags: ["great design", "craftsmanship", "quality"],
     type: "video",
     duration: "53:22",
+    thumbnail: "/images/content/videos/the-qualities-of-great-design.png",
   },
 ];

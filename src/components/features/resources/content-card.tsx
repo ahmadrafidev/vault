@@ -54,7 +54,7 @@ export function ContentCard({ content, className }: ContentCardProps) {
         )}>
 
           {/* Inner card layer */}
-          <div className="relative w-full flex-1 rounded-sm bg-zinc-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 transition-all duration-300 ease-out group-hover:bg-gray-50/80 dark:group-hover:bg-zinc-800/80 group-hover:border-gray-300 dark:group-hover:border-zinc-600 overflow-hidden mb-1">
+          <div className="relative w-full flex-1 rounded-sm bg-zinc-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 transition-all duration-150 ease-out group-hover:bg-gray-50/80 dark:group-hover:bg-zinc-800/80 group-hover:border-gray-300 dark:group-hover:border-zinc-600 overflow-hidden mb-1">
             {getImageSrc() ? (
               /* Full thumbnail when available */
               <div className="relative w-full h-full">
@@ -62,7 +62,7 @@ export function ContentCard({ content, className }: ContentCardProps) {
                   src={getImageSrc()!}
                   alt={`${content.title} ${content.type === 'person' ? 'avatar' : 'thumbnail'}`}
                   fill
-                  className="object-cover rounded-sm transition-all duration-300 ease-out group-hover:scale-105"
+                  className="object-cover rounded-sm transition-all duration-300 ease-out group-hover:scale-[1.01]"
                 />
               </div>
             ) : (
