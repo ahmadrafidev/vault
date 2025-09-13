@@ -11,25 +11,31 @@ export const CATEGORIES_CONFIG: readonly ResourceCategoryData[] = [
   {
     id: "articles",
     name: "Articles",
-    description: "Thought-provoking articles on design and engineering principles, trends, and insights",
+    description: "Design and engineering articles, insights, and trends",
     iconName: "FileText" as const,
   },
   {
     id: "videos",
     name: "Videos",
-    description: "Curated video content about design engineering, user experience, and creative processes",
+    description: "Curated video content about design engineering",
     iconName: "PlayCircle" as const,
   },
   {
     id: "people",
     name: "People",
-    description: "Inspiring designers, engineers, creators, and innovators shaping the future of design",
+    description: "Inspiring designers and creative professionals",
     iconName: "Users" as const,
+  },
+  {
+    id: "tools",
+    name: "Tools",
+    description: "Essential design and development tools",
+    iconName: "Wrench" as const,
   },
   {
     id: "other",
     name: "Other",
-    description: "Miscellaneous resources, tools, and discoveries that don't fit traditional categories",
+    description: "Miscellaneous resources and discoveries",
     iconName: "MoreHorizontal" as const,
   },
 ] as const;
@@ -53,8 +59,13 @@ export const CATEGORY_METADATA = {
     color: "purple",
     tags: ["community", "inspiration", "networking"],
   },
-  other: {
+  tools: {
     priority: 4,
+    color: "orange",
+    tags: ["productivity", "development", "design tools"],
+  },
+  other: {
+    priority: 5,
     color: "gray",
     tags: ["miscellaneous", "tools", "utilities"],
   },

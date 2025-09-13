@@ -2,7 +2,7 @@ import { ReactNode, CSSProperties } from 'react';
 
 // Common types
 export type IconType = ReactNode;
-export type IconName = 'FileText' | 'PlayCircle' | 'Users' | 'MoreHorizontal';
+export type IconName = 'FileText' | 'PlayCircle' | 'Users' | 'MoreHorizontal' | 'Wrench';
 
 // Resource types
 export interface ResourceCategoryData {

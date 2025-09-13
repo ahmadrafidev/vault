@@ -1,5 +1,5 @@
 import type { AnimationConfig } from "@/src/types";
-import { CATEGORIES_CONFIG } from "@/src/data";
+import { CATEGORIES_CONFIG, getCategoriesByPriority } from "@/src/data";
 
 // Animation constants
 export const ANIMATION_CONFIG: AnimationConfig = {
@@ -11,12 +11,10 @@ export const ANIMATION_CONFIG: AnimationConfig = {
 export const RESOURCE_CATEGORIES_DATA = CATEGORIES_CONFIG;
 
 // Tab navigation
-export const RESOURCE_TABS = [
-  { id: "videos", label: "Videos" },
-  { id: "articles", label: "Articles" },
-  { id: "people", label: "People" },
-  { id: "other", label: "Other" },
-];
+export const RESOURCE_TABS = getCategoriesByPriority().map(category => ({
+  id: category.id,
+  label: category.name,
+}));
 
 // Default active tab
 export const DEFAULT_ACTIVE_TAB = "videos";

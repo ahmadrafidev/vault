@@ -1,4 +1,4 @@
-import { PlayCircle, FileText, Users, MoreHorizontal } from "lucide-react";
+import { PlayCircle, FileText, Users, MoreHorizontal, Wrench } from "lucide-react";
 import type { IconName, IconType } from "@/src/types";
 
 const iconMap = {
@@ -6,6 +6,7 @@ const iconMap = {
   PlayCircle,
   Users,
   MoreHorizontal,
+  Wrench,
 } as const;
 
 /**

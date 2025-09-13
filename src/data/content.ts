@@ -5,6 +5,7 @@
 import { videosData } from "./content/videos";
 import { articlesData } from "./content/articles";
 import { peopleData } from "./content/people";
+import { toolsData } from "./content/tools";
 import { otherData } from "./content/other";
 import type { ContentItem, ContentType } from "./content/types";
 
@@ -18,6 +19,7 @@ export const CONTENT_DATA: Record<string, ContentItem[]> = {
   videos: videosData,
   articles: articlesData,
   people: peopleData,
+  tools: toolsData,
   other: otherData,
 };
 
@@ -139,6 +141,7 @@ export function getContentStats() {
       videos: getContentCountByCategory('videos'),
       articles: getContentCountByCategory('articles'),
       people: getContentCountByCategory('people'),
+      tools: getContentCountByCategory('tools'),
       other: getContentCountByCategory('other'),
     },
     byType: {

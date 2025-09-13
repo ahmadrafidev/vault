@@ -1,38 +1,20 @@
 import Link from "next/link";
-import { ChevronRight, PlayCircle, FileText, Users, MoreHorizontal } from "lucide-react";
+import { ChevronRight, PlayCircle, FileText, Users, MoreHorizontal, Wrench } from "lucide-react";
 
 import { Header } from "@/src/components";
+import { getCategoriesByPriority, getCategoryMetadata } from "@/src/data";
+import { getIcon } from "@/src/utils/icon-utils";
 
-const resourceCategories = [
-  {
-    id: "videos",
-    name: "Videos",
-    description: "Curated video content about design engineering and creative processes",
-    icon: PlayCircle,
-    iconLabel: "Video content",
-  },
-  {
-    id: "articles",
-    name: "Articles",
-    description: "Thought-provoking articles on design and engineering.",
-    icon: FileText,
-    iconLabel: "Article content",
-  },
-  {
-    id: "people",
-    name: "People",
-    description: "Inspiring designers, engineers, and innovators.",
-    icon: Users,
-    iconLabel: "People and creators",
-  },
-  {
-    id: "other",
-    name: "Other",
-    description: "Miscellaneous resources, tools, and discoveries.",
-    icon: MoreHorizontal,
-    iconLabel: "Other resources",
-  },
-];
+const resourceCategories = getCategoriesByPriority().map((category) => {
+  const metadata = getCategoryMetadata(category.id);
+  return {
+    id: category.id,
+    name: category.name,
+    description: category.description,
+    icon: getIcon(category.iconName),
+    iconLabel: `${category.name} content`,
+  };
+});
 
 export default function Home() {
   return (
@@ -46,10 +28,10 @@ export default function Home() {
         role="main"
         aria-labelledby="main-heading"
       >
-        <div className="pt-8 py-6 sm:py-12 md:py-16 text-start max-w-lg">
+        <div className="pt-8 py-6 sm:py-8 md:py-12 text-start max-w-lg">
           <h1
             id="main-heading"
-            className="text-3xl md:text-5xl font-medium tracking-tight text-foreground mb-4 leading-tight"
+            className="text-2xl md:text-4xl font-medium tracking-tight text-foreground mb-4 leading-tight"
           >
             The Essential Archive for Designers and Engineers
           </h1>
@@ -67,17 +49,15 @@ export default function Home() {
             </h2>
             
             <div className="space-y-3 md:space-y-6">
-              {resourceCategories.map((category) => {
-                const IconComponent = category.icon;
-                return (
-                  <Link key={category.id} href={`/resources?tab=${category.id}`}>
-                    <div className="group flex items-center gap-4 px-5 py-4 hover:bg-foreground/[0.008] hover:translate-x-1 active:translate-x-0 active:bg-foreground/[0.012] transition-all duration-200 ease-out cursor-pointer border-l-2 border-transparent hover:border-foreground/10 focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:ring-offset-2 rounded-md">
-                      <span
-                        className="text-lg group-hover:scale-105 transition-transform duration-200 ease-out flex-shrink-0 opacity-60 group-hover:opacity-80"
-                        aria-label={category.iconLabel}
-                      >
-                        <IconComponent className="w-5 h-5" aria-hidden="true" />
-                      </span>
+              {resourceCategories.map((category) => (
+                <Link key={category.id} href={`/resources?tab=${category.id}`}>
+                  <div className="group flex items-center gap-4 px-5 py-4 hover:bg-foreground/[0.008] hover:translate-x-1 active:translate-x-0 active:bg-foreground/[0.012] transition-all duration-200 ease-out cursor-pointer border-l-2 border-transparent hover:border-foreground/10 focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:ring-offset-2 rounded-md">
+                    <span
+                      className="text-lg group-hover:scale-105 transition-transform duration-200 ease-out flex-shrink-0 opacity-60 group-hover:opacity-80"
+                      aria-label={category.iconLabel}
+                    >
+                      {category.icon}
+                    </span>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-medium text-foreground text-base group-hover:text-foreground transition-colors duration-200 truncate">
                           {category.name}
@@ -91,8 +71,7 @@ export default function Home() {
                       </div>
                     </div>
                   </Link>
-                );
-              })}
+                ))}
             </div>
 
             <div className="mt-6 px-5">
