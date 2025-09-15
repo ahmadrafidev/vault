@@ -4,10 +4,10 @@ import { CATEGORIES_CONFIG, getCategoriesByPriority } from "@/src/data";
 // Animation constants
 export const ANIMATION_CONFIG: AnimationConfig = {
   easing: 'cubic-bezier(.215, .61, .355, 1)',
-  duration: 300,
+  duration: 200,
 };
 
-// Resource categories - imported from data source
+// Resource categories 
 export const RESOURCE_CATEGORIES_DATA = CATEGORIES_CONFIG;
 
 // Tab navigation
@@ -17,7 +17,7 @@ export const RESOURCE_TABS = getCategoriesByPriority().map(category => ({
 }));
 
 // Default active tab
-export const DEFAULT_ACTIVE_TAB = "videos";
+export const DEFAULT_ACTIVE_TAB = "articles";
 
 // Layout
 export const PAGE_LAYOUT = {

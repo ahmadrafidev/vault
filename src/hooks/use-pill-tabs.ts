@@ -51,19 +51,19 @@ export function usePillTabs({
   // Setup resize observers
   useLayoutEffect(() => {
     const container = tabContainerRef.current;
-    
+
     const handleResize = () => {
       const activeIndex = findActiveTabIndex(tabs, activeTab);
       const activeButton = triggerRefs.current[activeIndex];
       const newStyle = calculateIndicatorStyle(container, activeButton, animationConfig);
-      
+
       if (newStyle) {
         setIndicatorStyle(newStyle);
       }
     };
 
     const resizeObserver = new ResizeObserver(handleResize);
-    
+
     if (container) {
       resizeObserver.observe(container);
     }

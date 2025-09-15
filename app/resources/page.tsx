@@ -10,13 +10,21 @@ import { RESOURCE_CATEGORIES_DATA, RESOURCE_TABS, DEFAULT_ACTIVE_TAB } from "@/s
 function ResourcesContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState(DEFAULT_ACTIVE_TAB);
+
+  // Initialize activeTab with URL param or default
+  const tabParam = searchParams.get('tab');
+  const initialTab = tabParam && RESOURCE_TABS.some(tab => tab.id === tabParam) ? tabParam : DEFAULT_ACTIVE_TAB;
+  const [activeTab, setActiveTab] = useState(initialTab);
+
   const resourceCategories = useResourceCategories(RESOURCE_CATEGORIES_DATA);
 
+  // Update activeTab when URL changes (for browser navigation)
   useEffect(() => {
-    const tabParam = searchParams.get('tab');
-    if (tabParam && RESOURCE_TABS.some(tab => tab.id === tabParam)) {
-      setActiveTab(tabParam);
+    const currentTabParam = searchParams.get('tab');
+    if (currentTabParam && RESOURCE_TABS.some(tab => tab.id === currentTabParam)) {
+      setActiveTab(currentTabParam);
+    } else if (!currentTabParam) {
+      setActiveTab(DEFAULT_ACTIVE_TAB);
     }
   }, [searchParams]);
 
