@@ -41,6 +41,7 @@ export const toolsData: ToolContent[] = [
     tags: ["productivity", "documentation", "project management", "collaboration"],
     type: "tool",
     platform: "cross-platform",
+    thumbnail: "/images/content/tools/notion.png",
   },
   {
     id: "paper",

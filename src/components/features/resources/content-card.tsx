@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Clock, User, Play, FileText, Users, Wrench } from "lucide-react";
+import { ExternalLink, Clock, User, Play, FileText, Users, Wrench, Loader2 } from "lucide-react";
+import { useState } from "react";
 
 import type { ContentItem } from "@/src/data";
 import { cn } from "@/src/utils";
@@ -11,6 +14,9 @@ interface ContentCardProps {
 }
 
 export function ContentCard({ content, className }: ContentCardProps) {
+  const [imageLoading, setImageLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
+
   const getTypeIcon = () => {
     switch (content.type) {
       case 'video':
@@ -54,6 +60,36 @@ export function ContentCard({ content, className }: ContentCardProps) {
     return `${content.title} thumbnail`;
   };
 
+  const getThumbnailConfig = () => {
+    switch (content.type) {
+      case 'tool':
+        return {
+          containerSize: 'w-full h-full',
+          imageClasses: 'object-contain object-center'
+        };
+      case 'person':
+        return {
+          containerSize: 'w-24 h-24', 
+          imageClasses: 'object-cover object-center rounded-full'
+        };
+      case 'video':
+        return {
+          containerSize: 'w-full h-full',
+          imageClasses: 'object-cover rounded-sm'
+        };
+      case 'article':
+        return {
+          containerSize: 'w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] lg:aspect-[4/3]',
+          imageClasses: 'object-cover object-center rounded-sm'
+        };
+      default:
+        return {
+          containerSize: 'w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] lg:aspect-[4/3]',
+          imageClasses: 'object-cover object-center rounded-sm'
+        };
+    }
+  };
+
   return (
     <article className={cn(
       "group relative h-full min-h-64 transition-all duration-150 group-focus-visible:ring-2 group-focus-visible:ring-gray-500/50 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-white dark:group-focus-visible:ring-offset-gray-900 outline-none",
@@ -73,24 +109,60 @@ export function ContentCard({ content, className }: ContentCardProps) {
 
           {/* Inner card layer */}
           <div className="relative w-full flex-1 rounded-sm bg-zinc-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 transition-all duration-150 ease-out group-hover:bg-gray-50/80 dark:group-hover:bg-zinc-800/80 group-hover:border-gray-300 dark:group-hover:border-zinc-600 overflow-hidden mb-1">
-            {getImageSrc() ? (
-              /* Full thumbnail when available */
-              <div className="relative w-full h-full">
+            {getImageSrc() && !imageError ? (
+              <div className={cn(
+                "relative overflow-hidden",
+                (content.type === 'tool' || content.type === 'person')
+                  ? "flex items-center justify-center w-full h-full"
+                  : "",
+                getThumbnailConfig().containerSize
+              )}>
+                
+                {/* Loading skeleton */}
+                {imageLoading && (
+                  <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse flex items-center justify-center">
+                    <Loader2 className="w-6 h-6 text-gray-400 animate-spin" />
+                  </div>
+                )}
+
                 <Image
                   src={getImageSrc()!}
                   alt={getAltText()}
                   fill
-                  className="object-cover rounded-sm transition-all duration-300 ease-out group-hover:scale-[1.01]"
+                  sizes={content.type === 'tool' ? "80px" :
+                        content.type === 'person' ? "96px" :
+                        "(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"}
+                  quality={85}
+                  priority={false}
+                  className={cn(
+                    "transition-all duration-300 ease-out group-hover:scale-[1.02] group-hover:brightness-105",
+                    getThumbnailConfig().imageClasses,
+                    imageLoading ? "opacity-0" : "opacity-100"
+                  )}
+                  onLoad={() => setImageLoading(false)}
+                  onError={() => {
+                    setImageLoading(false);
+                    setImageError(true);
+                  }}
                 />
               </div>
             ) : (
-              /* Type Icon fallback */
-              <div className="flex items-center justify-center h-full">
-                <div className="flex-shrink-0">
-                  <div className="relative w-16 h-16 rounded-2xl bg-gray-100 dark:bg-gray-800 border border-gray-300/50 dark:border-gray-600/40 flex items-center justify-center transition-all duration-300 ease-out group-hover:scale-105 group-hover:shadow-md group-hover:bg-gray-200 dark:group-hover:bg-gray-700">
-                    <div className="text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors duration-300">
-                      {getTypeIcon()}
-                    </div>
+
+              /* Type Icon */
+              <div className={cn(
+                "flex items-center justify-center h-full",
+                (content.type === 'tool' || content.type === 'person')
+                  ? "w-full h-full"
+                  : "w-full h-full"
+              )}>
+                <div className={cn(
+                  "bg-gray-100 dark:bg-gray-800 border border-gray-300/50 dark:border-gray-600/40 flex items-center justify-center transition-all duration-300 ease-out group-hover:scale-105 group-hover:shadow-md group-hover:bg-gray-200 dark:group-hover:bg-gray-700",
+                  content.type === 'tool' ? "w-12 h-12 rounded-lg" :
+                  content.type === 'person' ? "w-16 h-16 rounded-full" :
+                  "w-16 h-16 rounded-lg"
+                )}>
+                  <div className="text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors duration-300">
+                    {getTypeIcon()}
                   </div>
                 </div>
               </div>
