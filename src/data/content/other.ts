@@ -31,4 +31,14 @@ export const otherData: ContentItem[] = [
     type: "resource",
     resourceType: "tutorial",
   },
+  {
+    id: "poline",
+    title: "Poline",
+    description: "An enigmatic color palette generator, that harnesses the mystical witchcraft of polar coordinates.",
+    link: "  https://meodai.github.io/poline/",
+    category: "other",
+    tags: ["color system", "color palette"],
+    type: "resource",
+    resourceType: "tool",
+  },
 ];
