@@ -65,7 +65,7 @@ export function ContentCard({ content, className }: ContentCardProps) {
       case 'tool':
         return {
           containerSize: 'w-full h-full',
-          imageClasses: 'object-contain object-center'
+          imageClasses: 'object-scale-down object-center p-3'
         };
       case 'person':
         return {
@@ -117,7 +117,7 @@ export function ContentCard({ content, className }: ContentCardProps) {
                   : "",
                 getThumbnailConfig().containerSize
               )}>
-                
+
                 {/* Loading skeleton */}
                 {imageLoading && (
                   <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse flex items-center justify-center">
@@ -132,7 +132,6 @@ export function ContentCard({ content, className }: ContentCardProps) {
                   sizes={content.type === 'tool' ? "80px" :
                         content.type === 'person' ? "96px" :
                         "(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"}
-                  quality={85}
                   priority={false}
                   className={cn(
                     "transition-all duration-300 ease-out group-hover:scale-[1.02] group-hover:brightness-105",

@@ -10,6 +10,7 @@ export const toolsData: ToolContent[] = [
     tags: ["design", "prototyping", "collaboration", "ui/ux"],
     type: "tool",
     platform: "cross-platform",
+    thumbnail: "/images/content/tools/figma.png",
   },
   {
     id: "framer",
@@ -20,6 +21,7 @@ export const toolsData: ToolContent[] = [
     tags: ["prototyping", "animation", "interactive design", "react"],
     type: "tool",
     platform: "web",
+    thumbnail: "/images/content/tools/framer.png",
   },
   {
     id: "vercel",
@@ -52,6 +54,7 @@ export const toolsData: ToolContent[] = [
     tags: ["design", "canvas", "prototyping", "creative tools"],
     type: "tool",
     platform: "web",
+    thumbnail: "/images/content/tools/paper.png",
   },
   {
     id: "lumen",
@@ -62,5 +65,6 @@ export const toolsData: ToolContent[] = [
     tags: ["accessibility", "color contrast", "wcag", "design tools"],
     type: "tool",
     platform: "web",
+    thumbnail: "/images/content/tools/lumen.png",
   },
 ];
