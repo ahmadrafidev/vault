@@ -49,6 +49,7 @@ export function SuggestionForm({ className }: SuggestionFormProps) {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const categories = getCategoriesByPriority();
+  const isComingSoon = true; // Set to false when ready to enable
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -117,10 +118,22 @@ export function SuggestionForm({ className }: SuggestionFormProps) {
           <p className="text-sm text-foreground/60">
             Share something valuable you've discovered
           </p>
+          <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-amber-50 border border-amber-200 rounded-full">
+            <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+            <span className="text-xs font-medium text-amber-700">Coming Soon</span>
+          </div>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-5" role="form" aria-labelledby="suggest-form-heading">
+      <div className="relative">
+        {isComingSoon && (
+          <div className="absolute inset-0 bg-background/20 backdrop-blur-[1px] rounded-lg z-10 flex items-center justify-center">
+            <div className="bg-background/90 border border-foreground/20 rounded-lg px-4 py-2 shadow-sm">
+              <p className="text-sm text-foreground/60 text-center">Coming Soon</p>
+            </div>
+          </div>
+        )}
+        <form onSubmit={handleSubmit} className="space-y-5" role="form" aria-labelledby="suggest-form-heading">
         {/* Category Selection */}
         <FormField
           label="Category"
@@ -131,8 +144,8 @@ export function SuggestionForm({ className }: SuggestionFormProps) {
             <select
               value={formData.category || ''}
               onChange={(e) => handleInputChange('category', e.target.value)}
-              className="w-full px-4 py-3 pr-12 bg-background/50 border border-foreground/20 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-foreground/30 focus:border-foreground/60 focus:bg-background focus:shadow-sm focus:shadow-foreground/10 transition-all duration-200 appearance-none"
-              disabled={isPending}
+              className="w-full px-4 py-3 pr-12 bg-background/50 border border-foreground/20 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-foreground/30 focus:border-foreground/60 focus:bg-background focus:shadow-sm focus:shadow-foreground/10 transition-all duration-200 appearance-none disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={isPending || isComingSoon}
             >
               <option value="">Select a category...</option>
               {categories.map((category) => (
@@ -161,8 +174,8 @@ export function SuggestionForm({ className }: SuggestionFormProps) {
               value={formData.url || ''}
               onChange={(e) => handleInputChange('url', e.target.value)}
               placeholder="Paste a link..."
-              className="w-full pl-4 pr-12 py-3 bg-background/50 border border-foreground/20 rounded-lg text-base placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/30 focus:border-foreground/60 focus:bg-background focus:shadow-sm focus:shadow-foreground/10 transition-all duration-200"
-              disabled={isPending}
+              className="w-full pl-4 pr-12 py-3 bg-background/50 border border-foreground/20 rounded-lg text-base placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/30 focus:border-foreground/60 focus:bg-background focus:shadow-sm focus:shadow-foreground/10 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={isPending || isComingSoon}
               required
               aria-describedby="url-help"
             />
@@ -179,11 +192,13 @@ export function SuggestionForm({ className }: SuggestionFormProps) {
         {/* Submit Button */}
         <button
           type="submit"
-          disabled={isPending}
+          disabled={isPending || isComingSoon}
           className="w-full px-5 py-3 bg-foreground text-background rounded-lg font-medium hover:bg-foreground/90 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] text-base flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           aria-describedby="submit-help"
         >
-          {isPending ? (
+          {isComingSoon ? (
+            <span>Coming Soon</span>
+          ) : isPending ? (
             <>
               <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
               <span>Sending...</span>
@@ -213,7 +228,8 @@ export function SuggestionForm({ className }: SuggestionFormProps) {
         <div id="submit-help" className="sr-only">
           Submit your resource suggestion to be reviewed for inclusion in the archive
         </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }
