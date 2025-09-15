@@ -19,6 +19,7 @@ export const videosData: ContentItem[] = [
     category: "videos",
     tags: ["quality", "design", "conversation"],
     type: "video",
+    thumbnail: "/images/content/videos/conversations-on-quality.png",
   },
   {
     id: "crafting-quality",
