@@ -4,6 +4,7 @@ import { ChevronRight, PlayCircle, FileText, Users, MoreHorizontal, Wrench } fro
 import { Header } from "@/src/components";
 import { getCategoriesByPriority, getCategoryMetadata } from "@/src/data";
 import { getIcon } from "@/src/utils/icon-utils";
+import { SuggestionForm } from "@/src/components/ui/suggestion-form";
 
 const resourceCategories = getCategoriesByPriority().map((category) => {
   const metadata = getCategoryMetadata(category.id);
@@ -93,53 +94,10 @@ export default function Home() {
             >
               Contribute to the archive
             </h2>
-            
+
             {/* Card */}
             <div className="bg-gradient-to-br from-foreground/[0.02] to-foreground/[0.06] rounded-xl p-6 border border-foreground/10 backdrop-blur-sm">
-              <div className="flex items-center mb-2 md:mb-4">
-                <div>
-                  <h3 id="suggest-form-heading" className="text-base font-medium text-foreground">Suggest a Resource</h3>
-                  <p className="text-sm text-foreground/60">
-                    Share something valuable you've discovered
-                  </p>
-                </div>
-              </div>
-              
-              <form className="space-y-5" role="form" aria-labelledby="suggest-form-heading">
-                <div className="relative">
-                  <label htmlFor="resource-url" className="sr-only">
-                    Resource URL
-                  </label>
-                  <input
-                    id="resource-url"
-                    name="resource-url"
-                    type="url"
-                    placeholder="Paste a link..."
-                    className="w-full px-5 py-4 bg-background/50 border border-foreground/20 rounded-lg text-base placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/30 focus:border-foreground/60 focus:bg-background focus:shadow-sm focus:shadow-foreground/10 transition-all duration-200"
-                    required
-                    aria-describedby="url-help"
-                  />
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2" aria-hidden="true">
-                    <svg className="w-5 h-5 text-foreground/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                    </svg>
-                  </div>
-                  <div id="url-help" className="sr-only">
-                    Enter the URL of a resource you'd like to suggest for the archive
-                  </div>
-                </div>
-                
-                <button
-                  type="submit"
-                  className="w-full px-5 py-2 md:py-3 bg-foreground text-background rounded-lg font-medium hover:bg-foreground/90 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] text-base flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:ring-offset-2"
-                  aria-describedby="submit-help"
-                >
-                  <span>Send Suggestion</span>
-                </button>
-                <div id="submit-help" className="sr-only">
-                  Submit your resource suggestion to be reviewed for inclusion in the archive
-                </div>
-              </form>
+              <SuggestionForm />
             </div>
           </section>
         </div>
