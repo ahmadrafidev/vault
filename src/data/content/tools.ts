@@ -1,6 +1,6 @@
-import type { ContentItem } from "./types";
+import type { ToolContent } from "./types";
 
-export const toolsData: ContentItem[] = [
+export const toolsData: ToolContent[] = [
   {
     id: "figma",
     title: "Figma",
@@ -8,8 +8,8 @@ export const toolsData: ContentItem[] = [
     link: "https://www.figma.com",
     category: "tools",
     tags: ["design", "prototyping", "collaboration", "ui/ux"],
-    type: "resource",
-    resourceType: "tool",
+    type: "tool",
+    platform: "cross-platform",
   },
   {
     id: "framer",
@@ -18,8 +18,8 @@ export const toolsData: ContentItem[] = [
     link: "https://www.framer.com",
     category: "tools",
     tags: ["prototyping", "animation", "interactive design", "react"],
-    type: "resource",
-    resourceType: "tool",
+    type: "tool",
+    platform: "web",
   },
   {
     id: "vercel",
@@ -28,8 +28,9 @@ export const toolsData: ContentItem[] = [
     link: "https://vercel.com",
     category: "tools",
     tags: ["deployment", "hosting", "serverless", "cdn"],
-    type: "resource",
-    resourceType: "tool",
+    type: "tool",
+    thumbnail: "/images/content/tools/vercel.png",
+    platform: "web",
   },
   {
     id: "notion",
@@ -38,8 +39,8 @@ export const toolsData: ContentItem[] = [
     link: "https://www.notion.so",
     category: "tools",
     tags: ["productivity", "documentation", "project management", "collaboration"],
-    type: "resource",
-    resourceType: "tool",
+    type: "tool",
+    platform: "cross-platform",
   },
   {
     id: "paper",
@@ -48,8 +49,8 @@ export const toolsData: ContentItem[] = [
     link: "https://paper.design",
     category: "tools",
     tags: ["design", "canvas", "prototyping", "creative tools"],
-    type: "resource",
-    resourceType: "tool",
+    type: "tool",
+    platform: "web",
   },
   {
     id: "lumen",
@@ -58,7 +59,7 @@ export const toolsData: ContentItem[] = [
     link: "https://luumen.vercel.app",
     category: "tools",
     tags: ["accessibility", "color contrast", "wcag", "design tools"],
-    type: "resource",
-    resourceType: "tool",
+    type: "tool",
+    platform: "web",
   },
 ];

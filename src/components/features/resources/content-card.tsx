@@ -1,6 +1,6 @@
-import { ExternalLink, Clock, User, Play, FileText, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { ExternalLink, Clock, User, Play, FileText, Users, Wrench } from "lucide-react";
 
 import type { ContentItem } from "@/src/data";
 import { cn } from "@/src/utils";
@@ -19,6 +19,10 @@ export function ContentCard({ content, className }: ContentCardProps) {
         return <FileText className="w-4 h-4" />;
       case 'person':
         return <Users className="w-4 h-4" />;
+      case 'tool':
+        return <Wrench className="w-4 h-4" />;
+      case 'resource':
+        return <FileText className="w-4 h-4" />;
       default:
         return <FileText className="w-4 h-4" />;
     }
@@ -28,12 +32,26 @@ export function ContentCard({ content, className }: ContentCardProps) {
     switch (content.type) {
       case 'video':
       case 'article':
+      case 'tool':
         return content.thumbnail;
       case 'person':
         return content.avatar;
+      case 'resource':
+        return undefined;
       default:
         return undefined;
     }
+  };
+
+  const getAriaLabel = () => {
+    return `View ${content.type}: ${content.title} (opens in new tab)`;
+  };
+
+  const getAltText = () => {
+    if (content.type === 'person') return `${content.title} avatar`;
+    if (content.type === 'tool') return `${content.title} logo`;
+
+    return `${content.title} thumbnail`;
   };
 
   return (
@@ -45,7 +63,7 @@ export function ContentCard({ content, className }: ContentCardProps) {
         href={content.link}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`View ${content.type}: ${content.title} (opens in new tab)`}
+        aria-label={getAriaLabel()}
         className="block h-full"
       >
         {/* Outer card layer */}
@@ -60,7 +78,7 @@ export function ContentCard({ content, className }: ContentCardProps) {
               <div className="relative w-full h-full">
                 <Image
                   src={getImageSrc()!}
-                  alt={`${content.title} ${content.type === 'person' ? 'avatar' : 'thumbnail'}`}
+                  alt={getAltText()}
                   fill
                   className="object-cover rounded-sm transition-all duration-300 ease-out group-hover:scale-[1.01]"
                 />

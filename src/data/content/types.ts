@@ -5,7 +5,7 @@
 /**
  * Content types supported
  */
-export type ContentType = 'video' | 'article' | 'person' | 'resource';
+export type ContentType = 'video' | 'article' | 'person' | 'resource' | 'tool';
 
 /**
  * Base content item structure
@@ -61,4 +61,14 @@ export interface ResourceContent extends BaseContentItem {
   resourceType: 'tool' | 'library' | 'tutorial' | 'template' | 'other';
 }
 
-export type ContentItem = VideoContent | ArticleContent | PersonContent | ResourceContent;
+/**
+ * Tool content item - specialized for design/development tools
+ */
+export interface ToolContent extends BaseContentItem {
+  type: 'tool';
+  thumbnail?: string;
+  platform?: 'web' | 'desktop' | 'mobile' | 'cross-platform';
+  website?: string;
+}
+
+export type ContentItem = VideoContent | ArticleContent | PersonContent | ResourceContent | ToolContent;
