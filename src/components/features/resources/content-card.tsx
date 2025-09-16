@@ -209,7 +209,7 @@ export function ContentCard({ content, className }: ContentCardProps) {
                 {content.type === 'person' && 'company' in content && (
                   <span className="truncate text-xs md:text-sm font-medium">{content.company}</span>
                 )}
-                {content.type === 'tool' && content.tags && content.tags.length > 0 && (
+                {(content.type === 'tool' || content.type === 'resource') && content.tags && content.tags.length > 0 && (
                   <div className="flex items-center gap-1.5">
                     {content.tags.map((tag, index) => (
                       <span
