@@ -90,4 +90,15 @@ export const peopleData: ContentItem[] = [
     role: "Chief Product Officer",
     company: "Avara",
   },
+  {
+    id: "chan-karunamuni",
+    title: "Chan Karunamuni",
+    description: "Human Interface Designer at Apple.",
+    link: "https://www.chankarunamuni.com/",
+    category: "people",
+    tags: ["human interface designer", "apple"],
+    type: "person",
+    role: "Human Interface Designer",
+    company: "Apple",
+  },
 ];
