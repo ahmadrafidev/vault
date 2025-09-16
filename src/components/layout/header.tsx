@@ -17,7 +17,10 @@ export function Header() {
   const isHomeActive = pathname === "/";
 
   return (
-    <header className="bg-background/95 backdrop-blur-sm sticky top-0 z-50" role="banner">
+    <header
+      className="sticky top-0 z-50 backdrop-blur-sm"
+      role="banner"
+    >
       <div className={cn("max-w-5xl mx-auto", containerPadding)}>
         <div className="flex items-center justify-center h-16">
           {/* Navigation */}
