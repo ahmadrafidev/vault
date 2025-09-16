@@ -12,6 +12,7 @@ export function PillTabs({ tabs, activeTab, onTabChange, className }: PillTabsPr
     tabContainerRef,
     triggerRefs,
     setActiveTab,
+    isAnimating,
   } = usePillTabs({
     tabs,
     defaultActiveTab: activeTab,
@@ -56,8 +57,15 @@ export function PillTabs({ tabs, activeTab, onTabChange, className }: PillTabsPr
           {/* Animated Indicator */}
           <div
             aria-hidden="true"
-            className="absolute rounded-full bg-foreground shadow-sm border border-foreground/30 pointer-events-none transition-all duration-150 ease-out"
-            style={{ ...indicatorStyle, zIndex: 0 }}
+            className={cn(
+              "absolute rounded-full bg-foreground shadow-sm border border-foreground/30 pointer-events-none",
+              isAnimating && "shadow-lg"
+            )}
+            style={{ 
+              ...indicatorStyle,
+              zIndex: 0,
+              backfaceVisibility: 'hidden',
+            }}
           />
           
           {/* Tab Buttons */}

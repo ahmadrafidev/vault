@@ -17,6 +17,7 @@ interface UsePillTabsReturn {
   triggerRefs: React.MutableRefObject<(HTMLButtonElement | null)[]>;
   setActiveTab: (tabId: string) => void;
   updateIndicator: () => void;
+  isAnimating: boolean;
 }
 
 export function usePillTabs({
@@ -26,8 +27,10 @@ export function usePillTabs({
 }: UsePillTabsProps): UsePillTabsReturn {
   const [activeTab, setActiveTab] = useState(defaultActiveTab);
   const [indicatorStyle, setIndicatorStyle] = useState<TabIndicatorStyle>({});
+  const [isAnimating, setIsAnimating] = useState(false);
   const tabContainerRef = useRef<HTMLDivElement>(null);
   const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const animationTimeoutRef = useRef<NodeJS.Timeout>();
 
   // Ensure refs array matches tab count
   triggerRefs.current = ensureRefArrayLength(triggerRefs.current, tabs.length);
@@ -39,7 +42,16 @@ export function usePillTabs({
 
     const newStyle = calculateIndicatorStyle(container, activeButton, animationConfig);
     if (newStyle) {
+      setIsAnimating(true);
       setIndicatorStyle(newStyle);
+      
+      if (animationTimeoutRef.current) {
+        clearTimeout(animationTimeoutRef.current);
+      }
+      
+      animationTimeoutRef.current = setTimeout(() => {
+        setIsAnimating(false);
+      }, animationConfig.duration + 100);
     }
   }, [activeTab, tabs, animationConfig]);
 
@@ -76,6 +88,14 @@ export function usePillTabs({
     };
   }, [tabs, activeTab, animationConfig]);
 
+  useLayoutEffect(() => {
+    return () => {
+      if (animationTimeoutRef.current) {
+        clearTimeout(animationTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return {
     activeTab,
     indicatorStyle,
@@ -83,5 +103,6 @@ export function usePillTabs({
     triggerRefs,
     setActiveTab,
     updateIndicator,
+    isAnimating,
   };
 }

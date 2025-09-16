@@ -3,8 +3,8 @@ import { CATEGORIES_CONFIG, getCategoriesByPriority } from "@/src/data";
 
 // Animation constants
 export const ANIMATION_CONFIG: AnimationConfig = {
-  easing: 'cubic-bezier(.215, .61, .355, 1)',
-  duration: 200,
+  easing: 'cubic-bezier(.23, 1, .32, 1)', 
+  duration: 150,
 };
 
 // Resource categories 

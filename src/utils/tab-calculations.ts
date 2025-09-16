@@ -12,9 +12,11 @@ export function calculateIndicatorStyle(
 
   const containerRect = container.getBoundingClientRect();
   const buttonRect = activeButton.getBoundingClientRect();
-
+  
+  const translateX = buttonRect.left - containerRect.left;
+  
   return {
-    left: `${buttonRect.left - containerRect.left}px`,
+    left: `${translateX}px`,
     width: `${activeButton.offsetWidth}px`,
     height: `${activeButton.offsetHeight}px`,
     transition: `left ${animationConfig.duration}ms ${animationConfig.easing}, width ${animationConfig.duration}ms ${animationConfig.easing}`,
