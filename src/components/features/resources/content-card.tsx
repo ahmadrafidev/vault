@@ -209,6 +209,18 @@ export function ContentCard({ content, className }: ContentCardProps) {
                 {content.type === 'person' && 'company' in content && (
                   <span className="truncate text-xs md:text-sm font-medium">{content.company}</span>
                 )}
+                {content.type === 'tool' && content.tags && content.tags.length > 0 && (
+                  <div className="flex items-center gap-1.5">
+                    {content.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200/50 dark:border-gray-600/50 transition-all duration-200 hover:shadow-sm hover:scale-105"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
               <ExternalLink className="w-3 h-3 text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300" aria-hidden="true" />
             </div>
