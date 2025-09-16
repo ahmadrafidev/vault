@@ -79,4 +79,15 @@ export const peopleData: ContentItem[] = [
     role: "Head of Design",
     company: "Cursor",
   },
+  {
+    id: "benji-taylor",
+    title: "Benji Taylor",
+    description: "CPO at Avara. Founder of Family and Honk",
+    link: "https://benji.org/",
+    category: "people",
+    tags: ["chief product officer", "avara", "family"],
+    type: "person",
+    role: "Chief Product Officer",
+    company: "Avara",
+  },
 ];
