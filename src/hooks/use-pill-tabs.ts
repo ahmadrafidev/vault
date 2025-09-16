@@ -30,9 +30,8 @@ export function usePillTabs({
   const [isAnimating, setIsAnimating] = useState(false);
   const tabContainerRef = useRef<HTMLDivElement>(null);
   const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const animationTimeoutRef = useRef<NodeJS.Timeout>();
+  const animationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Ensure refs array matches tab count
   triggerRefs.current = ensureRefArrayLength(triggerRefs.current, tabs.length);
 
   const updateIndicator = useCallback(() => {
