@@ -183,11 +183,21 @@ export function ContentCard({ content, className }: ContentCardProps) {
 
             {/* Metadata */}
             <div className="flex items-center justify-between pt-1">
-              <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
-                {content.type === 'video' && 'duration' in content && (
+              <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                {content.type === 'video' && (
                   <>
-                    <Clock className="w-3 h-3" aria-hidden="true" />
-                    <span>{content.duration}</span>
+                    {'duration' in content && (
+                      <>
+                        <Clock className="w-3 h-3" aria-hidden="true" />
+                        <span>{content.duration}</span>
+                      </>
+                    )}
+                    {'creator' in content && (
+                      <>
+                        <User className="w-3 h-3" aria-hidden="true" />
+                        <span className="truncate">{content.creator}</span>
+                      </>
+                    )}
                   </>
                 )}
                 {content.type === 'article' && 'author' in content && (

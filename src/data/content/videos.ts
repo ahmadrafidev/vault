@@ -10,6 +10,7 @@ export const videosData: ContentItem[] = [
     tags: ["animation", "springs", "motion"],
     type: "video",
     duration: "22:52",
+    creator: "Apple",
   },
   {
     id: "conversation-on-quality",
@@ -20,6 +21,7 @@ export const videosData: ContentItem[] = [
     tags: ["quality", "design", "conversation"],
     type: "video",
     thumbnail: "/images/content/videos/conversations-on-quality.png",
+    creator: "Linear",
   },
   {
     id: "crafting-quality",
@@ -30,6 +32,7 @@ export const videosData: ContentItem[] = [
     tags: ["quality", "design", "tools"],
     type: "video",
     duration: "20:03",
+    creator: "Linear",
   },
   {
     id: "designing-fluid-interface",
@@ -41,6 +44,7 @@ export const videosData: ContentItem[] = [
     type: "video",
     duration: "64:41",
     thumbnail: "/images/content/videos/designing-fluid-interfaces.png",
+    creator: "Apple",
   },
   {
     id: "designing-sound",
@@ -52,6 +56,7 @@ export const videosData: ContentItem[] = [
     type: "video",
     duration: "34:48",
     thumbnail: "/images/content/videos/designing-sound.png",
+    creator: "Apple",
   },
   {
     id: "designing-with-the-mind-in-mind",
@@ -62,6 +67,7 @@ export const videosData: ContentItem[] = [
     tags: ["psychology", "ui design", "human factors"],
     type: "video",
     duration: "67:17",
+    creator: "Jeff Johnson",
   },
   {
     id: "essential-design-principles",
@@ -73,6 +79,7 @@ export const videosData: ContentItem[] = [
     type: "video",
     duration: "59:55",
     thumbnail: "/images/content/videos/essential-design-principles.png",
+    creator: "Apple",
   },
   {
     id: "liquid-glass",
@@ -83,6 +90,7 @@ export const videosData: ContentItem[] = [
     tags: ["liquid glass", "apple", "design"],
     type: "video",
     duration: "19:32",
+    creator: "Apple",
   },
   {
     id: "motion-and-playfullness",
@@ -94,6 +102,7 @@ export const videosData: ContentItem[] = [
     type: "video",
     duration: "49:06",
     thumbnail: "/images/content/videos/motion-and-playfullness.png",
+    creator: "Benjamin De Cock",
   },
   {
     id: "the-qualities-of-great-design",
@@ -105,5 +114,6 @@ export const videosData: ContentItem[] = [
     type: "video",
     duration: "53:22",
     thumbnail: "/images/content/videos/the-qualities-of-great-design.png",
+    creator: "Apple",
   },
 ];

@@ -26,6 +26,7 @@ export interface VideoContent extends BaseContentItem {
   type: 'video';
   duration?: string;
   thumbnail?: string;
+  creator: string;
 }
 
 /**
