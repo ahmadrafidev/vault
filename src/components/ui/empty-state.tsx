@@ -44,7 +44,7 @@ export function EmptyState({ category, className }: EmptyStateProps) {
             role="img"
             aria-label={`${category.name} category icon`}
           >
-            {category.icon}
+            <span aria-hidden="true">{category.icon}</span>
           </div>
           <h3 className={cn(titleSize, "font-medium text-foreground mb-2")}>
             No {category.name.toLowerCase()} yet

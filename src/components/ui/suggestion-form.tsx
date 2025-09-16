@@ -200,26 +200,26 @@ export function SuggestionForm({ className }: SuggestionFormProps) {
             <span>Coming Soon</span>
           ) : isPending ? (
             <>
-              <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
+              <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" aria-hidden="true" />
               <span>Sending...</span>
             </>
           ) : submitStatus === 'success' ? (
             <>
-              <CheckCircle className="w-4 h-4" />
+              <CheckCircle className="w-4 h-4" aria-hidden="true" />
               <span>Suggestion Sent!</span>
             </>
           ) : (
             <>
               <span>Send Suggestion</span>
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-4 h-4" aria-hidden="true" />
             </>
           )}
         </button>
 
         {submitStatus === 'error' && (
-          <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+          <div className="p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
             <p className="text-sm text-red-700 flex items-center gap-2">
-              <AlertCircle className="w-4 h-4" />
+              <AlertCircle className="w-4 h-4" aria-hidden="true" />
               Failed to send suggestion. Please try again.
             </p>
           </div>

@@ -120,8 +120,8 @@ export function ContentCard({ content, className }: ContentCardProps) {
 
                 {/* Loading skeleton */}
                 {imageLoading && (
-                  <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse flex items-center justify-center">
-                    <Loader2 className="w-6 h-6 text-gray-400 animate-spin" />
+                  <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse flex items-center justify-center" aria-hidden="true">
+                    <Loader2 className="w-6 h-6 text-gray-400 animate-spin" aria-hidden="true" />
                   </div>
                 )}
 
@@ -186,15 +186,21 @@ export function ContentCard({ content, className }: ContentCardProps) {
               <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
                 {content.type === 'video' && 'duration' in content && (
                   <>
-                    <Clock className="w-3 h-3" />
+                    <Clock className="w-3 h-3" aria-hidden="true" />
                     <span>{content.duration}</span>
+                  </>
+                )}
+                {content.type === 'article' && 'author' in content && (
+                  <>
+                    <User className="w-3 h-3" aria-hidden="true" />
+                    <span className="truncate">{content.author}</span>
                   </>
                 )}
                 {content.type === 'person' && 'company' in content && (
                   <span className="truncate text-xs md:text-sm font-medium">{content.company}</span>
                 )}
               </div>
-              <ExternalLink className="w-3 h-3 text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300" />
+              <ExternalLink className="w-3 h-3 text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300" aria-hidden="true" />
             </div>
           </div>
         </div>

@@ -29,7 +29,7 @@ export const articlesData: ContentItem[] = [
     category: "articles",
     tags: ["payments", "ux", "animations"],
     type: "article",
-    author: "Bridge Collection",
+    author: "Michaël Villar",
   },
   {
     id: "invisible-details-of-interaction-design",

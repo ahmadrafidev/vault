@@ -56,7 +56,7 @@ export function PillTabs({ tabs, activeTab, onTabChange, className }: PillTabsPr
           {/* Animated Indicator */}
           <div
             aria-hidden="true"
-            className="absolute rounded-full bg-foreground shadow-sm border border-foreground/30 pointer-events-none"
+            className="absolute rounded-full bg-foreground shadow-sm border border-foreground/30 pointer-events-none transition-all duration-150 ease-out"
             style={{ ...indicatorStyle, zIndex: 0 }}
           />
           

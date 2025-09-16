@@ -90,7 +90,14 @@ export default function ResourcesPage() {
   return (
     <div className="bg-background">
       <Header />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={
+        <div className="min-h-[400px] flex items-center justify-center" role="status" aria-live="polite">
+          <div className="text-center">
+            <div className="w-8 h-8 border-2 border-foreground/30 border-t-foreground rounded-full animate-spin mx-auto mb-4" aria-hidden="true"></div>
+            <p className="text-sm text-foreground/60">Loading resources...</p>
+          </div>
+        </div>
+      }>
         <ResourcesContent />
       </Suspense>
     </div>

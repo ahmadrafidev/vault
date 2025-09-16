@@ -18,7 +18,7 @@ export function ResourceContent({ categories, activeTab }: ResourceContentProps)
     return () => clearTimeout(timer);
   }, [activeTab]);
   return (
-    <div className="min-h-[400px]" role="tabpanel" aria-labelledby={`tab-${activeTab}`}>
+    <div className="min-h-[400px]">
       {categories.map((category) => {
         const contentItems = getContentByCategory(category.id);
 
@@ -34,33 +34,38 @@ export function ResourceContent({ categories, activeTab }: ResourceContentProps)
             aria-hidden={activeTab !== category.id}
           >
             {contentItems.length > 0 ? (
-              <div className="space-y-6">
-                {/* All Content Section */}
-                <section>
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    {contentItems.map((item, index) => (
-                      <div
-                        key={item.id}
-                        className={`transition-all duration-700 ease-out ${
-                          isVisible
-                            ? 'opacity-100 translate-y-0'
-                            : 'opacity-0 translate-y-12'
-                        }`}
-                        style={{ transitionDelay: `${300 + (index * 150)}ms` }}
-                      >
-                        <ContentCard content={item} />
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              </div>
-            ) : (
-              <div className="text-center py-12">
-                <div className="text-muted-foreground">
-                  <p className="text-lg font-medium mb-2">No content available</p>
-                  <p className="text-sm">Content for {category.name.toLowerCase()} will be added soon.</p>
+              <section aria-labelledby={`tab-${category.id}`}>
+                <h3 id={`content-heading-${category.id}`} className="sr-only">
+                  {category.name} resources
+                </h3>
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" role="list" aria-label={`${category.name} content items`}>
+                  {contentItems.map((item, index) => (
+                    <div
+                      key={item.id}
+                      className={`transition-all duration-700 ease-out ${
+                        isVisible
+                          ? 'opacity-100 translate-y-0'
+                          : 'opacity-0 translate-y-12'
+                      }`}
+                      style={{ transitionDelay: `${300 + (index * 150)}ms` }}
+                      role="listitem"
+                    >
+                      <ContentCard content={item} />
+                    </div>
+                  ))}
                 </div>
-              </div>
+              </section>
+            ) : (
+              <section aria-labelledby={`tab-${category.id}`}>
+                <div className="text-center py-12">
+                  <h3 className="text-lg font-medium text-muted-foreground mb-2">
+                    No {category.name.toLowerCase()} content available
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Content for {category.name.toLowerCase()} will be added soon.
+                  </p>
+                </div>
+              </section>
             )}
           </div>
         );

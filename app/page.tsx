@@ -78,10 +78,11 @@ export default function Home() {
             <div className="mt-6 px-5">
               <Link
                 href="/resources"
-                className="inline-flex items-center gap-1.5 text-sm text-foreground/50 hover:text-foreground/70 transition-all duration-200 hover:translate-x-0.5 group font-medium"
+                className="inline-flex items-center gap-1.5 text-sm text-foreground/50 hover:text-foreground/70 transition-all duration-200 hover:translate-x-0.5 group font-medium focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:ring-offset-2 rounded-sm"
+                aria-label="View all resources in the archive"
               >
                 <span>View all resources</span>
-                <ChevronRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 opacity-60 group-hover:opacity-100" />
+                <ChevronRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 opacity-60 group-hover:opacity-100" aria-hidden="true" />
               </Link>
             </div>
           </section>

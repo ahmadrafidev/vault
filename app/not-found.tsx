@@ -14,36 +14,39 @@ export default function NotFound() {
         </div>
 
         {/* Main content */}
-        <div className="space-y-6">
+        <main className="space-y-6" role="main">
           <div>
-            <h2 className="text-2xl font-medium text-foreground mb-3">
+            <h1 className="text-2xl font-medium text-foreground mb-3">
               Lost in the Vault?
-            </h2>
+            </h1>
             <p className="text-foreground/60 text-base leading-relaxed">
-              This gem seems to have vanished from our collection. 
+              This gem seems to have vanished from our collection.
               Don't worry, there are plenty more treasures to discover.
             </p>
           </div>
 
           {/* Navigation buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg font-medium transition-all duration-200 hover:bg-foreground/90 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:ring-offset-2 focus:ring-offset-background"
-            >
-              <Home size={18} />
-              Return to Vault
-            </Link>
-            
-            <button
-              onClick={() => window.history.back()}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-foreground/20 text-foreground rounded-lg font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] hover:border-foreground/40 hover:bg-foreground/5 focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:ring-offset-2 focus:ring-offset-background"
-            >
-              <ChevronLeft size={18} />
-              Retrace steps
-            </button>
-          </div>
-        </div>
+          <nav aria-label="Error page navigation">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg font-medium transition-all duration-200 hover:bg-foreground/90 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:ring-offset-2 focus:ring-offset-background"
+              >
+                <Home size={18} aria-hidden="true" />
+                Return to Vault
+              </Link>
+
+              <button
+                onClick={() => window.history.back()}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-foreground/20 text-foreground rounded-lg font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] hover:border-foreground/40 hover:bg-foreground/5 focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:ring-offset-2 focus:ring-offset-background"
+                aria-label="Go back to the previous page"
+              >
+                <ChevronLeft size={18} aria-hidden="true" />
+                Retrace steps
+              </button>
+            </div>
+          </nav>
+        </main>
 
       </div>
     </div>
