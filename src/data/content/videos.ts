@@ -93,6 +93,7 @@ export const videosData: ContentItem[] = [
     tags: ["motion", "playfulness", "engagement"],
     type: "video",
     duration: "49:06",
+    thumbnail: "/images/content/videos/motion-and-playfullness.png",
   },
   {
     id: "the-qualities-of-great-design",
