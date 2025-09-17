@@ -1,20 +1,59 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
 import { useMobileLayout } from "@/src/hooks";
+import { NeatTab, type TabItem } from "@/src/components/ui";
 import { cn } from "@/src/utils";
 
 export function Header() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
+  
   const { containerPadding } = useMobileLayout({
     reducePadding: true,
     compactSpacing: true,
     adaptiveMaxWidth: true,
   });
 
-  const isResourceActive = pathname === "/resources";
-  const isHomeActive = pathname === "/";
+  // Navigation tabs configuration
+  const navigationTabs: TabItem[] = [
+    { label: "Home" },
+    { label: "Resources" },
+  ];
+
+  // Map pathname to tab index
+  const getActiveTabIndex = (path: string) => {
+    switch (path) {
+      case "/":
+        return 0;
+      case "/resources":
+        return 1;
+      default:
+        return 0;
+    }
+  };
+
+  // Set client-side flag after hydration
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Handle tab navigation
+  const handleTabChange = (index: number) => {
+    switch (index) {
+      case 0:
+        router.push("/");
+        break;
+      case 1:
+        router.push("/resources");
+        break;
+      default:
+        router.push("/");
+    }
+  };
 
   return (
     <header
@@ -23,41 +62,14 @@ export function Header() {
     >
       <div className={cn("max-w-5xl mx-auto", containerPadding)}>
         <div className="flex items-center justify-center h-16">
-          {/* Navigation */}
-          <nav
-            id="navigation"
-            className="flex items-center space-x-1"
-            role="navigation"
-            aria-label="Main navigation"
-          >
-            {/* Home Link */}
-            <Link
-              href="/"
-              className={cn(
-                "px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-150",
-                isHomeActive
-                  ? "bg-foreground/10 text-foreground"
-                  : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
-              )}
-              aria-current={isHomeActive ? "page" : undefined}
-            >
-              Home
-            </Link>
-
-            {/* Resources Link */}
-            <Link
-              href="/resources"
-              className={cn(
-                "px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-150",
-                isResourceActive
-                  ? "bg-foreground/10 text-foreground"
-                  : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
-              )}
-              aria-current={isResourceActive ? "page" : undefined}
-            >
-              Resources
-            </Link>
-          </nav>
+          <NeatTab
+            key={`nav-${isClient ? pathname : 'initial'}`}
+            tabs={navigationTabs}
+            defaultTab={isClient ? getActiveTabIndex(pathname) : 0}
+            variant="pill"
+            onChange={handleTabChange}
+            className="z-10"
+          />
         </div>
       </div>
     </header>

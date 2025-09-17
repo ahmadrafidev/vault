@@ -4,7 +4,7 @@ import { CATEGORIES_CONFIG, getCategoriesByPriority } from "@/src/data";
 // Animation constants
 export const ANIMATION_CONFIG: AnimationConfig = {
   easing: 'cubic-bezier(.23, 1, .32, 1)', 
-  duration: 150,
+  duration: 300,
 };
 
 // Resource categories 
