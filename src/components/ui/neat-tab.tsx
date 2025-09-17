@@ -12,7 +12,7 @@ import {
 } from 'react';
 import { cn } from '@/src/utils';
 
-export interface TabItem {
+export interface NeatTabItem {
   label: string;
   content?: React.ReactNode;
 }
@@ -20,7 +20,7 @@ export interface TabItem {
 export type TabVariant = 'default' | 'pill';
 
 export interface TabProps {
-  tabs: TabItem[];
+  tabs: NeatTabItem[];
   defaultTab?: number;
   className?: string;
   variant?: TabVariant;

@@ -4,7 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { useMobileLayout } from "@/src/hooks";
-import { NeatTab, type TabItem } from "@/src/components/ui";
+import { NeatTab, type NeatTabItem } from "@/src/components/ui";
 import { cn } from "@/src/utils";
 
 export function Header() {
@@ -19,7 +19,7 @@ export function Header() {
   });
 
   // Navigation tabs configuration
-  const navigationTabs: TabItem[] = [
+  const navigationTabs: NeatTabItem[] = [
     { label: "Home" },
     { label: "Resources" },
   ];
