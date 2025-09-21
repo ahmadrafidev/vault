@@ -1,16 +1,23 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState, useMemo, useCallback, memo } from "react";
 
 import { useMobileLayout } from "@/src/hooks";
 import { NeatTab, type NeatTabItem } from "@/src/components/ui";
 import { cn } from "@/src/utils";
 
-export function Header() {
+const HeaderComponent = memo(function Header() {
   const pathname = usePathname();
   const router = useRouter();
-  const [isClient, setIsClient] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
+
+  // Memoize current tab calculation
+  const currentTab = useMemo(() => {
+    if (pathname === "/") return 0;
+    if (pathname === "/resources") return 1;
+    return 0;
+  }, [pathname]);
   
   const { containerPadding } = useMobileLayout({
     reducePadding: true,
@@ -18,42 +25,17 @@ export function Header() {
     adaptiveMaxWidth: true,
   });
 
-  // Navigation tabs configuration
-  const navigationTabs: NeatTabItem[] = [
+  // Memoize navigation tabs array
+  const navigationTabs: NeatTabItem[] = useMemo(() => [
     { label: "Home" },
     { label: "Resources" },
-  ];
+  ], []);
 
-  // Map pathname to tab index
-  const getActiveTabIndex = (path: string) => {
-    switch (path) {
-      case "/":
-        return 0;
-      case "/resources":
-        return 1;
-      default:
-        return 0;
-    }
-  };
-
-  // Set client-side flag after hydration
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // Handle tab navigation
-  const handleTabChange = (index: number) => {
-    switch (index) {
-      case 0:
-        router.push("/");
-        break;
-      case 1:
-        router.push("/resources");
-        break;
-      default:
-        router.push("/");
-    }
-  };
+  // Memoize tab change handler
+  const handleTabChange = useCallback((index: number) => {
+    if (index === 0) router.push("/");
+    if (index === 1) router.push("/resources");
+  }, [router]);
 
   return (
     <header
@@ -63,15 +45,18 @@ export function Header() {
       <div className={cn("max-w-5xl mx-auto", containerPadding)}>
         <div className="flex items-center justify-center h-16">
           <NeatTab
-            key={`nav-${isClient ? pathname : 'initial'}`}
             tabs={navigationTabs}
-            defaultTab={isClient ? getActiveTabIndex(pathname) : 0}
-            variant="pill"
+            defaultTab={currentTab}
             onChange={handleTabChange}
+            variant="pill"
             className="z-10"
           />
         </div>
       </div>
     </header>
   );
-}
+});
+
+HeaderComponent.displayName = 'Header';
+
+export { HeaderComponent as Header };
