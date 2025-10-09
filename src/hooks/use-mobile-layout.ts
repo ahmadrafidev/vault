@@ -38,8 +38,8 @@ export function useMobileLayout(config: MobileLayoutConfig = {}): MobileLayoutSt
 
   const sectionSpacing = useResponsiveValue({
     mobile: compactSpacing ? "py-6" : "py-8",
-    tablet: "py-8 sm:py-10",
-    desktop: "py-8 sm:py-12",
+    tablet: "py-6",
+    desktop: "py-4",
   });
 
   const heroSpacing = useResponsiveValue({
