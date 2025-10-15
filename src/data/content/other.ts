@@ -51,4 +51,14 @@ export const otherData: ContentItem[] = [
     type: "resource",
     resourceType: "other",
   },
+  {
+    id: "componentsbuild",
+    title: "Components Build",
+    description: "A handbook for building UI components.",
+    link: "https://www.components.build/",
+    category: "other",
+    tags: ["components", "handbook"],
+    type: "resource",
+    resourceType: "tutorial",
+  },
 ];
