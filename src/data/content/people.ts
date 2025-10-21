@@ -101,4 +101,15 @@ export const peopleData: ContentItem[] = [
     role: "Human Interface Designer",
     company: "Apple",
   },
+  {
+    id: "jhey-tompkins",
+    title: "Jhey Tompkins",
+    description: "Staff Design Engineer at Shopify.",
+    link: "https://www.jhey.dev/",
+    category: "people",
+    tags: ["animation", "css"],
+    type: "person",
+    role: "Staff Design Engineer",
+    company: "Shopify",
+  },
 ];
