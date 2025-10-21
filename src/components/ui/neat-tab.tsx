@@ -35,7 +35,7 @@ interface TriggerProps {
 }
 
 const INDICATOR_EASING_CUBIC = 'cubic-bezier(.215, .61, .355, 1)';
-const INDICATOR_DURATION_MS = 300;
+const INDICATOR_DURATION_MS = 200;
 
 export const NeatTab = ({ tabs, defaultTab = 0, className, variant = 'default', onChange }: TabProps) => {
   const [activeTab, setActiveTab] = useState(defaultTab);
@@ -44,10 +44,17 @@ export const NeatTab = ({ tabs, defaultTab = 0, className, variant = 'default', 
   const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const reducedMotionRef = useRef<boolean>(false);
 
+  // Sync with external defaultTab changes
+  useEffect(() => {
+    setActiveTab(defaultTab);
+  }, [defaultTab]);
+
   // Ensure refs array length matches tab count
-  if (triggerRefs.current.length !== tabs.length) {
-    triggerRefs.current = Array.from({ length: tabs.length }, (_, i) => triggerRefs.current[i] ?? null);
-  }
+  useEffect(() => {
+    if (triggerRefs.current.length !== tabs.length) {
+      triggerRefs.current = Array.from({ length: tabs.length }, (_, i) => triggerRefs.current[i] ?? null);
+    }
+  }, [tabs.length]);
 
   const updateIndicator = useCallback(() => {
     const container = tabContainerRef.current;
@@ -104,30 +111,24 @@ export const NeatTab = ({ tabs, defaultTab = 0, className, variant = 'default', 
   // Position indicator on layout changes
   useLayoutEffect(() => {
     updateIndicator();
+  }, [activeTab, updateIndicator]);
 
+  // Setup resize observers once
+  useLayoutEffect(() => {
     const container = tabContainerRef.current;
-    const activeButton = triggerRefs.current[activeTab];
-    const resizeObservers: ResizeObserver[] = [];
+    if (!container) return;
 
-    if (container) {
-      const ro = new ResizeObserver(updateIndicator);
-      ro.observe(container);
-      resizeObservers.push(ro);
-    }
-    if (activeButton) {
-      const ro = new ResizeObserver(updateIndicator);
-      ro.observe(activeButton);
-      resizeObservers.push(ro);
-    }
+    const resizeObserver = new ResizeObserver(updateIndicator);
+    resizeObserver.observe(container);
 
     const onWindowResize = () => updateIndicator();
     window.addEventListener('resize', onWindowResize, { passive: true });
 
     return () => {
-      resizeObservers.forEach((ro) => ro.disconnect());
+      resizeObserver.disconnect();
       window.removeEventListener('resize', onWindowResize);
     };
-  }, [activeTab, tabs, variant, updateIndicator]);
+  }, [updateIndicator]);
 
   const onKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -177,8 +178,8 @@ export const NeatTab = ({ tabs, defaultTab = 0, className, variant = 'default', 
         >
           <div
             aria-hidden="true"
-            className="absolute rounded-md bg-zinc-900 dark:bg-zinc-50 shadow-sm pointer-events-none"
-            style={{ ...indicatorStyle, zIndex: 0 }}
+            className="absolute rounded-md bg-zinc-900 dark:bg-zinc-50 shadow-sm pointer-events-none will-change-[left,width,top,height]"
+            style={{ ...indicatorStyle, zIndex: 0, backfaceVisibility: 'hidden' }}
           />
           {tabs.map(({ label }, idx) => (
             <TabTrigger
@@ -208,8 +209,8 @@ export const NeatTab = ({ tabs, defaultTab = 0, className, variant = 'default', 
       >
         <div
           aria-hidden="true"
-          className="absolute rounded-md bg-gray-900 dark:bg-gray-100 shadow-sm pointer-events-none"
-          style={{ ...indicatorStyle, zIndex: 0 }}
+          className="absolute rounded-md bg-gray-900 dark:bg-gray-100 shadow-sm pointer-events-none will-change-[left,width,top,height]"
+          style={{ ...indicatorStyle, zIndex: 0, backfaceVisibility: 'hidden' }}
         />
         {tabs.map(({ label }, idx) => (
           <TabTrigger
@@ -245,10 +246,10 @@ const TabTrigger = memo(
           {...baseProps}
           className={cn(
             'relative px-4 py-2 text-sm font-medium rounded-md z-10 outline-none focus-visible:ring-0 focus-visible:outline-none',
-            'transition-all duration-200 ease-out',
+            'transition-colors duration-200 ease',
             active
               ? 'text-white dark:text-gray-900'
-              : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100/60 dark:hover:bg-gray-800/60 hover:scale-[1.02]'
+              : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100'
           )}
         >
           {label}
@@ -261,10 +262,10 @@ const TabTrigger = memo(
         {...baseProps}
         className={cn(
           'relative px-4 py-2 text-sm font-medium rounded-md z-10 outline-none focus-visible:ring-0 focus-visible:outline-none',
-          'transition-all duration-200 ease-out',
+          'transition-colors duration-200 ease',
           active
             ? 'text-gray-100 dark:text-gray-900'
-            : 'text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-gray-50 hover:bg-gray-200/40 dark:hover:bg-gray-700/40 hover:scale-[1.02]'
+            : 'text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-gray-50'
         )}
       >
         {label}

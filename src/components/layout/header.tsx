@@ -1,18 +1,21 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useState, useMemo, useCallback, memo } from "react";
+import { useMemo, useCallback, memo } from "react";
 
 import { useMobileLayout } from "@/src/hooks";
 import { NeatTab, type NeatTabItem } from "@/src/components/ui";
 import { cn } from "@/src/utils";
 
+const NAVIGATION_TABS: NeatTabItem[] = [
+  { label: "Home" },
+  { label: "Resources" },
+];
+
 const HeaderComponent = memo(function Header() {
   const pathname = usePathname();
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState(0);
 
-  // Memoize current tab calculation
   const currentTab = useMemo(() => {
     if (pathname === "/") return 0;
     if (pathname === "/resources") return 1;
@@ -25,13 +28,6 @@ const HeaderComponent = memo(function Header() {
     adaptiveMaxWidth: true,
   });
 
-  // Memoize navigation tabs array
-  const navigationTabs: NeatTabItem[] = useMemo(() => [
-    { label: "Home" },
-    { label: "Resources" },
-  ], []);
-
-  // Memoize tab change handler
   const handleTabChange = useCallback((index: number) => {
     if (index === 0) router.push("/");
     if (index === 1) router.push("/resources");
@@ -45,7 +41,7 @@ const HeaderComponent = memo(function Header() {
       <div className={cn("max-w-5xl mx-auto", containerPadding)}>
         <div className="flex items-center justify-center h-16">
           <NeatTab
-            tabs={navigationTabs}
+            tabs={NAVIGATION_TABS}
             defaultTab={currentTab}
             onChange={handleTabChange}
             variant="pill"
