@@ -87,7 +87,7 @@ export function PillTabs({ tabs, activeTab, onTabChange, className }: PillTabsPr
                 tabPadding,
                 fontSize,
                 activeTab === tab.id
-                  ? 'bg-foreground text-background'
+                  ? 'text-background'
                   : 'text-foreground/60 hover:text-foreground'
               )}
             >
