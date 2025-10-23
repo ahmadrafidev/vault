@@ -113,7 +113,7 @@ export function FeaturedResources({ className }: FeaturedResourcesProps) {
               <div className="bg-gradient-to-br from-foreground/[0.02] to-foreground/[0.06] rounded-lg p-4 border border-foreground/10 hover:border-foreground/20 transition-all duration-200 hover:shadow-sm hover:shadow-foreground/5">
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0">
-                    {resource.thumbnail ? (
+                    {'thumbnail' in resource && resource.thumbnail ? (
                       <div className="w-12 h-12 rounded-md overflow-hidden bg-foreground/5 flex items-center justify-center">
                         <img
                           src={resource.thumbnail}
