@@ -4,7 +4,7 @@ import { ChevronRight, PlayCircle, FileText, Users, MoreHorizontal, Wrench } fro
 import { Header } from "@/src/components";
 import { getCategoriesByPriority, getCategoryMetadata } from "@/src/data";
 import { getIcon } from "@/src/utils/icon-utils";
-import { SuggestionForm } from "@/src/components/ui/suggestion-form";
+import { FeaturedResources } from "@/src/components/ui/featured-resources";
 
 const resourceCategories = getCategoriesByPriority().map((category) => {
   const metadata = getCategoryMetadata(category.id);
@@ -25,11 +25,11 @@ export default function Home() {
       {/* Hero Section */}
       <main
         id="main-content"
-        className="max-w-5xl mx-auto px-6 lg:px-8"
+        className="max-w-5xl mx-auto px-4 md:px-6"
         role="main"
         aria-labelledby="main-heading"
       >
-        <div className="pt-8 py-6 sm:py-8 md:py-12 text-start max-w-lg">
+        <div className="pt-8 py-6 md:py-8 text-start max-w-lg">
           <h1
             id="main-heading"
             className="text-2xl md:text-4xl font-medium tracking-tight text-foreground mb-4 leading-tight"
@@ -39,9 +39,9 @@ export default function Home() {
         </div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-5 gap-6">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-8">
           {/* Resources Categories */}
-          <section className="lg:col-span-3" aria-labelledby="categories-heading">
+          <section aria-labelledby="categories-heading">
             <h2
               id="categories-heading"
               className="text-base md:text-lg font-normal text-foreground mb-1 sm:mb-2 md:mb-4"
@@ -87,18 +87,18 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Suggestion Section */}
-          <section className="lg:col-span-2" aria-labelledby="contribute-heading">
+          {/* Featured Resources */}
+          <section aria-labelledby="featured-heading">
             <h2
-              id="contribute-heading"
+              id="featured-heading"
               className="text-base md:text-lg font-medium text-foreground mb-1 sm:mb-2 md:mb-4"
             >
-              Contribute to the archive
+              Featured Resources
             </h2>
 
             {/* Card */}
             <div className="bg-gradient-to-br from-foreground/[0.02] to-foreground/[0.06] rounded-xl p-6 border border-foreground/10 backdrop-blur-sm">
-              <SuggestionForm />
+              <FeaturedResources />
             </div>
           </section>
         </div>
